@@ -691,6 +691,7 @@ footer span a:hover{
 /*Badge than side links*/
 .badge{
     background-color:#1565cd;
+    display: inline-block;
     height:125px;
     border-radius:50%;
     margin-top:20%;
