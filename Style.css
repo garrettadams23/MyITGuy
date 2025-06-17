@@ -746,7 +746,7 @@ padding:0px;
 {
     position:absolute;
     width:200px;
-    top:95px;
+    top:70px;
     right: -173px;
     background-color:black;
     position: fixed;
@@ -755,7 +755,17 @@ padding:0px;
 .divcont2
 {
     position:absolute;
-    top:145px;
+    top:125px;
+    width:200px;
+    right: -173px;
+    background-color:black;
+     position: fixed;
+}
+
+.divcont3
+{
+    position:absolute;
+    top:175px;
     width:200px;
     right: -173px;
     background-color:black;
