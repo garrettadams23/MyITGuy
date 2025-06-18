@@ -742,6 +742,8 @@ footer span a:hover{
     margin:0px;
 padding:0px;
 }
+
+/* Side links styling */
 .divcont1
 {
     position:absolute;
@@ -787,9 +789,10 @@ letter-spacing:4px;
     width:200px;
     position:absolute;
     right: 0px;
-    color:black;
-    
+    color:black;  
+}
 
-    
-
+/* BAD: Causes flickering */
+.container {
+  transform: translateY(0px);
 }
