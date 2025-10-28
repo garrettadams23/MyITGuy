@@ -15,11 +15,10 @@
 
 <!-- Initialize dataLayer early so it exists before GTM loads -->
 <script>
-  // Initialize dataLayer early so it exists before GTM loads
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   
-  // Check if user has already granted consent
+<!-- Check if user has already granted consent -->
   if (localStorage.getItem("consentGranted") === "true") {
     gtag('consent', 'update', {
       ad_user_data: 'granted',
