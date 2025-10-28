@@ -13,7 +13,32 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
 
-<!-- Google tag (gtag.js) -->
+<!-- Initialize dataLayer early so it exists before GTM loads -->
+<script>
+  // Initialize dataLayer early so it exists before GTM loads
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  
+  // Check if user has already granted consent
+  if (localStorage.getItem("consentGranted") === "true") {
+    gtag('consent', 'update', {
+      ad_user_data: 'granted',
+      ad_personalization: 'granted',
+      ad_storage: 'granted',
+      analytics_storage: 'granted'
+    });
+  } else {
+    gtag('consent', 'default', {
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      ad_storage: 'denied',
+      analytics_storage: 'denied'
+    });
+  }
+</script>
+
+<!-- Google Tag (gtag.js) -->
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5X9KFMCNEF"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -22,6 +47,18 @@
 
   gtag('config', 'G-5X9KFMCNEF');
 </script>
+
+
+<!-- Google Tag Manager (gtm.js) -->
+<script>
+  // Load Tag Manager script
+  var gtmScript = document.createElement('script');
+  gtmScript.async = true;
+  gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=G-5X9KFMCNEF';
+  var firstScript = document.getElementsByTagName('script')[0];
+  firstScript.parentNode.insertBefore(gtmScript, firstScript);
+</script>
+
 
     <!-- Below is for when someone get the link of this website -->
      <meta property="og:title" content="MyITGuy" />
@@ -416,3 +453,19 @@ Message me</div>
  <!-- Somehow I got an error, so I comment the script tag, just uncomment to use -->
 <!-- <script src="script.js"></script> -->
  <script src="script.js"></script>
+
+<!-- cookie consent component -->
+<script>
+  const grantButton = document.getElementById("grantButton");
+
+  grantButton?.addEventListener("click", function() {
+    localStorage.setItem("consentGranted", "true");
+
+    gtag('consent', 'update', {
+      ad_user_data: 'granted',
+      ad_personalization: 'granted',
+      ad_storage: 'granted',
+      analytics_storage: 'granted'
+    });
+  });
+</script>
