@@ -1,15 +1,35 @@
+
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+
+  // Consent Mode v2 defaults (DENIED) — must run BEFORE GTM loads Default: deny | everything until user chooses. Default required for Consent Mode v2.
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    analytics_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    wait_for_update: 500
+  });
+
+ // ---- Google Tag Manager ----
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.
+    src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MB82N5TC');
+
+
 // ---- Config | Google Tag Manager Script ----
-const CONSENT_KEY = "https://www.googletagmanager.com/gtm.js?id=G-5X9KFMCNEF"; // bump version if you change policy
+// const CONSENT_KEY = "https://www.googletagmanager.com/gtm.js?id=G-5X9KFMCNEF"; // bump version if you change policy
 // Below optional if using gtag.js config here 
 // const MEASUREMENT_ID = "G-5X9KFMCNEF"; 
 
 // ---- Helpers ----
-function getSavedConsent() {
-  try { return JSON.parse(localStorage.getItem(CONSENT_KEY)); } catch { return null; }
-}
+ function getSavedConsent() {
+   try { return JSON.parse(localStorage.getItem(CONSENT_KEY)); } catch { return null; }
+ }
 
-function saveConsent(state) {
-  localStorage.setItem(CONSENT_KEY, JSON.stringify({
+// function saveConsent(state) {
+   localStorage.setItem(CONSENT_KEY, JSON.stringify({
     state,               // "granted" or "denied"
     savedAt: Date.now()
   }));
@@ -25,14 +45,6 @@ function hideBanner() {
 // ---- Consent Mode (must run before GA/GTM sends hits) ----
 window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
-
-// Default: deny everything until user chooses. Default required for Consent Mode v2.
-gtag("consent", "default", {
-  ad_storage: "denied",
-  analytics_storage: "denied",
-  ad_user_data: "denied",
-  ad_personalization: "denied"
-});
 
 // (Optional but recommended) Wait a bit for user choice before firing tags
 gtag("consent", "default", { wait_for_update: 500 });
