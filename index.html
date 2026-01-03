@@ -36,27 +36,8 @@
   }
 </script>
 
-<!-- Google Tag (gtag.js) -->
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5X9KFMCNEF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-5X9KFMCNEF');
-</script>
 
 
-<!-- Google Tag Manager (gtm.js) -->
-<script>
-  // Load Tag Manager script
-  var gtmScript = document.createElement('script');
-  gtmScript.async = true;
-  gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=G-5X9KFMCNEF';
-  var firstScript = document.getElementsByTagName('script')[0];
-  firstScript.parentNode.insertBefore(gtmScript, firstScript);
-</script>
 
 
     <!-- Below is for when someone get the link of this website -->
@@ -68,6 +49,28 @@
 
 </head>
 <body>
+
+<!-- Cookie Consent Banner -->
+<div id="cookie-banner">
+  <div class="cookie-box">
+    <p>This site uses Google Analytics. Do you accept tracking?</p>
+    <button id="accept-cookies">Accept</button>
+    <button id="deny-cookies">Deny</button>
+  </div>
+</div>
+
+<!-- Google Tag Manager -->
+<script>
+var gtmScript = document.createElement('script');
+gtmScript.async = true;
+gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=G-5X9KFMCNEF';
+document.getElementsByTagName('script')[0].parentNode.insertBefore(gtmScript, null);
+</script>
+
+
+<!-- Consent Logic -->
+<script src="consent.js"></script>
+
 
 <!--Links on the right side-->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -121,7 +124,7 @@
     <section class="home" id="home">
         <div class="max-width">
             <div class="home-content">
-                <div class="text-1">
+                <div cladocument/image links to the websitess="text-1">
 Hello, my name is</div>
 <div class="text-2">
 Garrett Adams</div>
@@ -452,19 +455,3 @@ Message me</div>
  <!-- Somehow I got an error, so I comment the script tag, just uncomment to use -->
 <!-- <script src="script.js"></script> -->
  <script src="script.js"></script>
-
-<!-- cookie consent component -->
-<script>
-  const grantButton = document.getElementById("grantButton");
-
-  grantButton?.addEventListener("click", function() {
-    localStorage.setItem("consentGranted", "true");
-
-    gtag('consent', 'update', {
-      ad_user_data: 'granted',
-      ad_personalization: 'granted',
-      ad_storage: 'granted',
-      analytics_storage: 'granted'
-    });
-  });
-</script>

@@ -12,6 +12,43 @@ html{
     scroll-behavior: smooth;
 }
 
+#cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #111;
+  color: #fff;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  display: none;
+}
+
+.cookie-box {
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+}
+
+#cookie-banner button {
+  margin: 8px;
+  padding: 10px 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+#accept-cookies {
+  background: #4caf50;
+  color: white;
+}
+
+#deny-cookies {
+  background: #f44336;
+  color: white;
+}
+
 /* custom scroll bar */
 ::-webkit-scrollbar {
     width: 10px;
