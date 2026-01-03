@@ -1,38 +1,96 @@
-// Default required for Consent Mode v2
-gtag('consent', 'default', {
-  ad_storage: 'denied',
-  analytics_storage: 'denied',
-  ad_user_data: 'denied',
-  ad_personalization: 'denied'
-});
+// ---- Config | Google Tag Manager Script ----
+const CONSENT_KEY = "https://www.googletagmanager.com/gtm.js?id=G-5X9KFMCNEF"; // bump version if you change policy
+// Below optional if using gtag.js config here 
+// const MEASUREMENT_ID = "G-5X9KFMCNEF"; 
 
-// Show banner if no saved choice
-if (!localStorage.getItem('cookieConsent')) {
-  document.getElementById("cookie-banner").style.display = "block";
+// ---- Helpers ----
+function getSavedConsent() {
+  try { return JSON.parse(localStorage.getItem(CONSENT_KEY)); } catch { return null; }
 }
 
-document.getElementById("accept-cookies").addEventListener("click", () => {
-  localStorage.setItem("cookieConsent", "granted");
+function saveConsent(state) {
+  localStorage.setItem(CONSENT_KEY, JSON.stringify({
+    state,               // "granted" or "denied"
+    savedAt: Date.now()
+  }));
+}
 
-  gtag('consent', 'update', {
-    ad_storage: 'granted',
-    analytics_storage: 'granted',
-    ad_user_data: 'granted',
-    ad_personalization: 'granted'
-  });
+function showBanner() {
+  document.getElementById("consent-banner")?.classList.remove("hidden");
+}
 
-  document.getElementById("cookie-banner").style.display = "none";
+function hideBanner() {
+  document.getElementById("consent-banner")?.classList.add("hidden");
+}
+// ---- Consent Mode (must run before GA/GTM sends hits) ----
+window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+
+// Default: deny everything until user chooses. Default required for Consent Mode v2.
+gtag("consent", "default", {
+  ad_storage: "denied",
+  analytics_storage: "denied",
+  ad_user_data: "denied",
+  ad_personalization: "denied"
 });
 
-document.getElementById("deny-cookies").addEventListener("click", () => {
-  localStorage.setItem("cookieConsent", "denied");
+// (Optional but recommended) Wait a bit for user choice before firing tags
+gtag("consent", "default", { wait_for_update: 500 });
 
-  gtag('consent', 'update', {
-    ad_storage: 'denied',
-    analytics_storage: 'denied',
-    ad_user_data: 'denied',
-    ad_personalization: 'denied'
+// ---- Initialize GA (optional) ----
+// If you load GA via GTM, remove this section.
+// If you load GA via gtag.js, keep it and ensure gtag.js is loaded.
+function initGAIfNeeded() {
+  // Only call config after consent default is set.
+  // If you're not using direct gtag.js, skip.
+  // gtag("js", new Date());
+  // gtag("config", MEASUREMENT_ID, { anonymize_ip: true });
+}
+
+// ---- Apply user choice ----
+function applyConsent(choice) {
+  if (choice === "granted") {
+    gtag("consent", "update", {
+      ad_storage: "granted",
+      analytics_storage: "granted",
+      ad_user_data: "granted",
+      ad_personalization: "granted"
+    });
+  } else {
+    gtag("consent", "update", {
+      ad_storage: "denied",
+      analytics_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied"
+    });
+
+
+
+  }
+}
+
+// ---- UI wiring ----
+document.addEventListener("DOMContentLoaded", () => {
+  // initGAIfNeeded(); // uncomment if you’re initializing GA here
+
+  const saved = getSavedConsent();
+
+  if (!saved?.state) {
+    showBanner();
+  } else {
+    applyConsent(saved.state);
+    hideBanner();
+  }
+
+  document.getElementById("consent-accept")?.addEventListener("click", () => {
+    saveConsent("granted");
+    applyConsent("granted");
+    hideBanner();
   });
 
-  document.getElementById("cookie-banner").style.display = "none";
+  document.getElementById("consent-deny")?.addEventListener("click", () => {
+    saveConsent("denied");
+    applyConsent("denied");
+    hideBanner();
+  });
 });
