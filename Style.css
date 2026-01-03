@@ -505,7 +505,7 @@ section .title::after {
     ============================================ */
 .teams .title::after {
      content: "Personally used";
-     background: #222;
+     background: #111;
 }
 
 .teams .carousel .card {
