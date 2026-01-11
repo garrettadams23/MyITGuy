@@ -47,7 +47,7 @@ html {
 }
 
 .consent.hidden {
-  display: none;
+  display: none !important;
 }
 
 .consent__box {
