@@ -251,8 +251,8 @@ section .title::after {
 }
 
 .scroll-up-btn img {
-  width: 26px;
-  height: 26px;
+  width: 29px;
+  height: 29px;
 
   position: relative;
   z-index: 2; /* ensures image sits ON TOP */
@@ -327,7 +327,7 @@ section .title::after {
     ABOUT SECTION
     ============================================ */
 .about .title::after {
-     content: "who i am";
+     content: "who I am";
 }
 
 .about .about-content .left {
