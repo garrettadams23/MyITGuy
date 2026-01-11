@@ -28,7 +28,8 @@
    try { return JSON.parse(localStorage.getItem(CONSENT_KEY)); } catch { return null; }
  }
 
-// function saveConsent(state) {
+// 
+  function saveConsent(state) {
    localStorage.setItem(CONSENT_KEY, JSON.stringify({
     state,               // "granted" or "denied"
     savedAt: Date.now()
