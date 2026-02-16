@@ -1,5 +1,0 @@
-with:
-  path: |
-    ~/.cache/go-build
-    /home/runner/go/pkg/mod
-  key: ${{ runner.os }}-go-${{ hashFiles('backend/go.sum') }}
