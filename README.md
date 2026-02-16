@@ -1,13 +1,23 @@
-# MyaITGuy LLC idea
+# MyITGuy LLC
 
-This is a website made to show my skills to help me land more freelancing gigs.
+This is a website for a freelance IT services business.
 
-currently setup as a blog for myself and going to be updated to have it as a LLC business for IT services.
+## Website Architecture
 
-Website architecture is as follow:
+The site is built with a static frontend and a serverless backend.
 
--DNS registrar is Netlify (Server host website)
+- **DNS & Hosting**: Netlify
+- **Analytics**: Google Analytics for cookie collection (user data).
+- **Code Repository**: GitHub
 
--Google analytics does cookies collecting (User data)
+## Technology Stack
 
--Github for the website data repository (Location of the website code)
+- **Frontend**: Standard HTML, CSS, and JavaScript.
+- **Backend**: Serverless functions deployed on Netlify.
+
+### Backend Functions
+
+The following serverless functions are available in the `/netlify/functions` directory:
+
+- `health.js`: A simple health-check endpoint.
+- `db-test.js`: A placeholder endpoint for database connection testing.
