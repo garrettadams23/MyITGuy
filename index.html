@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Personal Portfolio Website</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+
+
+    
+    <!-- Icon Favicon -->
+    <link rel="manifest" href="site.webmanifest" />
+        <link rel="icon" type="image/png" href="Img/favicon/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/svg+xml" href="Img/favicon/favicon.svg" />
+        <link rel="shortcut icon" href="Img/favicon/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="Img/favicon/apple-touch-icon.png" />
+        <meta name="apple-mobile-web-app-title" content="IT Guy" />
+
+    <!-- Scripts -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+  
+
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="MyITGuy" />
+    <meta property="og:url" content="https://myitguy.netlify.app/" />
+    <meta property="og:image" content="https://www.dropbox.com/scl/fi/ajazyis3o3k3zops5gsk4/250520-D-IF881-1002.jpg?rlkey=6zskdw3qahq9kuxc4d1g4lvc6&st=0v5jz0kx&raw=1" />
+    <meta property="og:description" content="Showcase my skills to increase freelancing opportunities." />
+    <meta property="og:site_name" content="Portfolio Website" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Consent + GTM bootstrap -->
+<script>
+  const CONSENT_KEY = "myitguy_cookie_consent_v1";
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+
+  // Consent Mode v2 defaults (DENIED) — must run BEFORE GTM loads
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    analytics_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    wait_for_update: 500
+  });
+</script>
+
+<!-- Google Tag Manager -->
+<script>
+  (function(w,d,s,l,i){
+    w[l]=w[l]||[];
+    w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'});
+    var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),
+        dl=l!='dataLayer' ? '&l='+l : '';
+    j.async=true;
+    j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+    f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MB82N5TC');
+</script>
+
+</head>
+
+<body>
+   <!-- Cookie Consent Banner -->
+<div id="consent-banner" class="consent hidden" role="dialog" aria-live="polite" aria-label="Cookie consent">
+  <div class="consent__box">
+    <div class="consent__text">
+      <strong>Cookies & analytics</strong>
+      <p>We use cookies for analytics and to improve the site. You can accept or deny.</p>
+    </div>
+
+    <div class="consent__actions">
+      <button id="consent-deny" class="btn btn--secondary" type="button">Deny</button>
+      <button id="consent-accept" class="btn btn--primary" type="button">Accept</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Social Links -->
+<div class="divcont1">
+    <p>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxjfd4u2obvMbbeEGPJO8SGs1ArBrA7f0F6g&s" alt="Supportwave logo" style="height: 20px; vertical-align: middle;">
+        <a href="https://app.supportwave.com/Nerd?token=b073442e-bf07-480e-b095-94ff59d6ae7c">Supportwave®</a>
+    </p>
+</div>
+
+<div class="divcont1 divcont2">
+    <p>
+        <i class="fa fa-linkedin" aria-hidden="true"></i>
+        <a href="https://www.linkedin.com/in/garrettadams1010gmailcom?trk=contact-info">LinkedIn®</a>
+    </p>
+</div>
+
+<div class="divcont1 divcont2 divcont3">
+    <p>
+        <img src="https://www.dropbox.com/scl/fi/41rhu88mfp32gzoqonedr/Fiverr-logo.png?rlkey=yt3t3yo3smsxc0vvtcyqi1029&st=2xou69pc&raw=1" alt="Fiverr logo" style="height: 20px; vertical-align: middle;">
+        <a href="https://www.fiverr.com/garrettadams10?public_mode=true">Fiverr®</a>
+    </p>
+</div>
+
+<!-- Scroll Up Button -->
+<div class="scroll-up-btn">
+  <img src="Img/favicon/favicon-96x96.png" alt="Scroll to top">
+</div>
+
+<!-- Navigation -->
+<nav class="navbar">
+    <div class="max-width">
+        <div class="logo">
+            <a href="https://drive.google.com/file/d/1DaEtMoA9SjUnjSOQrTRZL-E7_kGwfDgv/view?usp=drivesdk">Portfo<span>lio.</span></a>
+        </div>
+        <ul class="menu">
+            <li><a href="#home" class="menu-btn">Home</a></li>
+            <li><a href="#about" class="menu-btn">About</a></li>
+            <li><a href="#services" class="menu-btn">Services</a></li>
+            <li><a href="#skills" class="menu-btn">Skills</a></li>
+            <li><a href="#teams" class="menu-btn">Projects</a></li>
+            <li><a href="#contact" class="menu-btn">Contact</a></li>
+        </ul>
+        <div class="menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</nav>
+
+<!-- Home Section -->
+<section class="home" id="home">
+    <div class="max-width">
+        <div class="home-content">
+            <div class="text-1">Hello, my name is</div>
+            <div class="text-2">Garrett Adams</div>
+            <div class="text-3">And I'm a <span class="typing"></span></div>
+            <a href="https://www.linkedin.com/in/garrettadams1010gmailcom?trk=contact-info">Hire me</a>
+        </div>
+    </div>
+</section>
+
+<!-- Badges Section -->
+<section class="badges">
+    <div class="max-width">
+        <img src="https://images.credly.com/images/80d8a06a-c384-42bf-ad36-db81bce5adce/blob" class="badge" alt="Credly badge">
+        <img src="https://images.credly.com/size/680x680/images/f6d62c5d-1e1d-4de6-92ee-8dc8c80b1c7b/blob" class="badge" alt="Credly badge">
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="about" id="about">
+    <div class="max-width">
+        <h2 class="title">About me</h2>
+        <div class="about-content">
+            <div class="column left">
+                <img src="https://dl.dropbox.com/s/7yt9u0rjmexaw0p/1612944603176.jpg?dl=0" alt="Profile picture">
+            </div>
+            <div class="column right">
+                <div class="text">I'm Garrett and I'm a <span class="typing-2"></span></div>
+                <p>Hey there, I am Garrett Adams, a self learner with IT skills in DoD, Enterprise, and freelancing. I'm a Cybersecurity student at <a href="https://www.csmd.edu/programs-courses/program-finder/cybersecurity.html">College of Southern Maryland (CSMD)</a>. Certified in CompTIA® Security+ and A+. I aspire to be a cybersecurity architect.</p>
+                <a href="https://drive.google.com/file/d/13fH0nwZDFb1ONb_u65gWouQ6u9ndSQNE/view?usp=sharing">Download CV</a>
+                
+                <p>This video describes my work on different projects and eagerness to learn new skills.</p>
+                <video controls>
+                    <source src="https://blob.sololearn.com/courses/video.mp4" type="video/mp4">
+                    <source src="https://blob.sololearn.com/courses/video.ogg" type="video/ogg">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="services" id="services">
+    <div class="max-width">
+        <h2 class="title">My services</h2>
+        <div class="serv-content">
+            <div class="card">
+                <div class="box">
+                    <i class="fas fa-paint-brush"></i>
+                    <div class="text">Troubleshooting Systems</div>
+                    <p>Troubleshooting software and hardware. Specialize in Android, Windows® and Linux systems.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="box">
+                    <i class="fas fa-chart-line"></i>
+                    <div class="text">Implementing applications</div>
+                    <p>Experience with Microsoft® applications, VPN, and parental controls (SIEM).</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="box">
+                    <i class="fas fa-code"></i>
+                    <div class="text">Customized Excel Worksheets and ServiceNow® dashboard</div>
+                    <p>Expertise in Excel for tracking logs, finances, budgeting, and account management. ServiceNow® dashboard customization.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section class="skills" id="skills">
+    <div class="max-width">
+        <h2 class="title">My skills</h2>
+        <div class="skills-content">
+            <div class="column left">
+                <div class="text">My creative skills & experiences.</div>
+                <p>I have experience in programming, troubleshooting, and networking. Complete frontend user support, data analysis, and IT administration. Full troubleshoot of Android, Windows® and Linux systems.</p>
+                <a href="https://drive.google.com/file/d/1DaEtMoA9SjUnjSOQrTRZL-E7_kGwfDgv/view?usp=drivesdk">Read more</a>
+            </div>
+            <div class="column right">
+                <div class="bars">
+                    <div class="info">
+                        <span>Windows® Operation System</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="line Windows"></div>
+                </div>
+                <div class="bars">
+                    <div class="info">
+                        <span>Linux Operation Systems</span>
+                        <span>60%</span>
+                    </div>
+                    <div class="line Linux"></div>
+                </div>
+                <div class="bars">
+                    <div class="info">
+                        <span>Androids</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="line Mobile"></div>
+                </div>
+                <div class="bars">
+                    <div class="info">
+                        <span>Software Applications</span>
+                        <span>70%</span>
+                    </div>
+                    <div class="line Software"></div>
+                </div>
+                <div class="bars">
+                    <div class="info">
+                        <span>Hardware</span>
+                        <span>95%</span>
+                    </div>
+                    <div class="line Hardware"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section class="teams" id="teams">
+    <div class="max-width">
+        <h2 class="title">My Projects</h2>
+        <div class="carousel owl-carousel">
+            <div class="card">
+                <div class="box">
+                    <img src="https://i0.wp.com/securityaffairs.com/wp-content/uploads/2024/08/openvpn-logo.jpg?fit=540%2C540&ssl=1" alt="OpenVPN CloudConnexa">
+                    <a href="https://openvpn.net/cloud-vpn/">
+                        <div class="text">Project 1 - OpenVPN CloudConnexa®</div>
+                        <p>Setup OpenVPN Cloudconnexa® to monitor, restrict, block, and protect data on multiple devices. A VPN (Virtual Private Network), CASB (Cloud Access Security Broker), and SIEM (Security Information and Event Management) solution.</p>
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="box">
+                    <img src="https://m.media-amazon.com/images/I/51O732qZ+HL._AC_UF894,1000_QL80_FMwebp_.jpg" alt="Kali Linux">
+                    <a href="https://www.kali.org/">
+                        <div class="text">Project 2 - Live Kali® USB</div>
+                        <p>Bootable live USB with Kali® Linux OS. Allows running OS on any device while keeping data on USB. Used for penetration testing.</p>
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="box">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Nextcloud_Logo.svg/1200px-Nextcloud_Logo.svg.png" alt="Nextcloud">
+                    <a href="https://nextcloud.com/">
+                        <div class="text">Project 3 - NextCloud</div>
+                        <p>Personal privacy cloud on your own desktop. Open source with unlimited drive storage. Setup, secured, and running as a personal server.</p>
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="box">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW_lJZfaW_sn9D0EwC1W5A_vwkpfw0LxEMdkRVJtArMg&s=10" alt="Windows">
+                    <a href="https://www.microsoft.com/en-us/">
+                        <div class="text">Project 4 - Customizing Windows® 10/11</div>
+                        <p>Customized Windows® OS for group policy, registry editor, event viewer logging, internet options, active directories, and control panel management.</p>
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="box">
+                    <img src="#" alt="Coming soon">
+                    <div class="text">Project 5 - Unified Task Sequences command outputting into website format</div>
+                    <p>Developed a comprehensive script that will combine the functions of 
+validation script and streamline troubleshooting for need software fixes. This new tool will also integrate BIOS configuration 
+checks and is being designed for compatibility across Dell and HP devices, including desktops, laptops, and tablets. Developed with HTML,CSS,and PowerShell.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact" id="contact">
+    <div class="max-width">
+        <h2 class="title">Contact Me</h2>
+        <div class="contact-content">
+            <div class="column left">
+                <div class="text">Get in Touch</div>
+                <p>Below is my contact information. Let me know if you need suggestions for projects or assistance. Feedback in the description helps improve your experience.</p>
+                <div class="row">
+                    <i class="fas fa-user"></i>
+                    <div class="info">
+                            <div class="head">Name:</div>
+                            <div class="sub-title"><a>Garrett Adams</a></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="info">
+                        <div class="head">Address:</div>
+                        <div class="sub-title"><a href="https://www.google.com/maps/place/Congress+Heights,+Washington,+DC" target="_blank">Congress Heights, Washington, DC 20032</a></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <i class="fas fa-envelope"></i>
+                    <div class="info">
+                        <div class="head">Email:</div>
+                        <div class="sub-title"><a href="mailto:garrettadams1010@gmail.com">garrettadams1010@gmail.com</a></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <i class="fas fa-phone-alt"></i>
+                    <div class="info">
+                        <div class="head">Phone:</div>
+                        <div class="sub-title"><a href="tel:1-240-380-6042">1-240-380-6042</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="column right">
+                <div class="text">Message me</div>
+                <form action="#">
+                    <div class="fields">
+                        <div class="field name">
+                            <input type="text" placeholder="Name" required>
+                        </div>
+                        <div class="field email">
+                            <input type="email" placeholder="Email" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <input type="text" placeholder="Subject" required>
+                    </div>
+                    <div class="field textarea">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="6" placeholder="Type your message..." required></textarea>
+                    </div>
+                    <br>
+                    <div class="field">
+                        <label for="rating"><h4>Your rating is greatly appreciated</h4></label>
+                        <select id="rating" name="rating" required>
+                            <option value="" disabled selected>Select a rating</option>
+                            <option value="5">5 - Best</option>
+                            <option value="4">4</option>
+                            <option value="3">3</option>
+                            <option value="2">2</option>
+                            <option value="1">1 - Worst</option>
+                        </select>
+                    </div>
+                    <div class="button">
+                        <button type="submit">Send message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <center><span>Created By <a href="https://www.sololearn.com/en/profile/5936598">&copy; Garrett Adams</a> | <span class="far fa-copyright"></span> 2025 All rights reserved.</span></center>
+
+    <a href="https://stackoverflow.com/users/32138546/garrett-adams">
+        <img src="https://stackoverflow.com/users/flair/32138546.png?theme=dark" width="208" height="58" alt="profile for Garrett Adams at Stack Overflow, Q&amp;A for professional and enthusiast programmers" 
+        title="profile for Garrett Adams at Stack Overflow, Q&amp;A for professional and enthusiast programmers"></a>
+</footer>
+    <script src="consent.js" defer></script>
+    <script src="script.js" defer></script>
+</body>
+</html>
