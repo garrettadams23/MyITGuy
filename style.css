@@ -5,6 +5,7 @@
      --light-background: #fff;
      --secondary-background: #222;
      --light-grey: lightgrey;
+     --text-main: #111;
 }
 
 /* ============================================
@@ -18,6 +19,37 @@
      box-sizing: border-box;
      text-decoration: none;
 }
+
+body {
+    background: var(--light-background);
+    color: var(--text-main);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Theme Override */
+body.dark-theme {
+    --light-background: #222;
+    --dark-background: #111;
+    --text-main: #fff;
+    --secondary-background: #333;
+    /* Adjust title lines for visibility */
+    --light-grey: #555;
+}
+
+/* Theme Button */
+.theme-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: var(--light-text);
+    margin-left: 25px;
+    transition: color 0.3s ease;
+}
+.theme-btn:hover {
+    color: var(--primary-color);
+}
+
 
 html {
      scroll-behavior: smooth;
@@ -172,7 +204,10 @@ section .title::after {
      transition: all 0.3s ease;
 }
 
+.navbar.sticky {
+     padding: 15px 0;
      background: var(--primary-color);
+}
 
 .navbar .max-width {
      display: flex;
@@ -279,7 +314,7 @@ section .title::after {
      height: 100vh;
      display: flex;
      align-items: center;
-     background: url("https://www.dropbox.com/scl/fi/ajazyis3o3k3zops5gsk4/250520-D-IF881-1002.jpg?rlkey=6zskdw3qahq9kuxc4d1g4lvc6&st=0v5jz0kx&raw=1") no-repeat center;
+     background: url("Img/local/bg-home.webp") no-repeat center;
      background-size: cover;
      background-attachment: fixed;
      color: var(--light-text);
@@ -403,7 +438,7 @@ section .title::after {
 
 .services .serv-content .card {
      width: calc(33% - 20px);
-     background: #222;
+     background: var(--secondary-background);
      text-align: center;
      border-radius: 6px;
      padding: 20px 25px;
@@ -524,20 +559,21 @@ section .title::after {
      background: var(--dark-background);
 }
 
-.teams .carousel .card {
-     background: #222;
+.teams .swiper-slide .card {
+     background: var(--secondary-background);
      border-radius: 6px;
      padding: 25px 35px;
      text-align: center;
      overflow: hidden;
      transition: all 0.3s ease;
+     height: 100%;
 }
 
-.teams .carousel .card:hover {
+.teams .swiper-slide .card:hover {
      background: var(--primary-color);
 }
 
-.teams .carousel .card .box {
+.teams .swiper-slide .card .box {
      display: flex;
      flex-direction: column;
      align-items: center;
@@ -545,17 +581,17 @@ section .title::after {
      transition: all 0.3s ease;
 }
 
-.teams .carousel .card:hover .box {
+.teams .swiper-slide .card:hover .box {
      transform: scale(1.05);
 }
 
-.teams .carousel .card .text {
+.teams .swiper-slide .card .text {
      font-size: 25px;
      font-weight: 500;
      margin: 10px 0 7px 0;
 }
 
-.teams .carousel .card img {
+.teams .swiper-slide .card img {
      height: 150px;
      width: 150px;
      object-fit: cover;
@@ -564,32 +600,30 @@ section .title::after {
      transition: all 0.3s ease;
 }
 
-.teams .carousel .card:hover img {
+.teams .swiper-slide .card:hover img {
      border-color: var(--light-text);
 }
 
-.owl-dots {
-     text-align: center;
-     margin-top: 20px;
+.swiper-pagination {
+    position: relative;
+    margin-top: 20px;
 }
 
-.owl-dot {
+.swiper-pagination-bullet {
      height: 13px;
      width: 13px;
      margin: 0 5px;
      outline: none !important;
      border-radius: 50%;
      border: 2px solid var(--primary-color) !important;
+     background: transparent;
+     opacity: 1;
      transition: all 0.3s ease;
 }
 
-.owl-dot.active {
+.swiper-pagination-bullet-active {
      width: 35px;
      border-radius: 14px;
-}
-
-.owl-dot.active,
-.owl-dot:hover {
      background: var(--primary-color) !important;
 }
 
@@ -922,4 +956,172 @@ footer span a:hover {
      .contact .right form .email {
           margin: 0;
      }
+}
+
+/* ============================================
+    BUSINESS CARD SECTION
+    ============================================ */
+.business-card {
+    background: var(--light-background);
+}
+
+.business-card .title::after {
+    content: "My Digital Card";
+}
+
+.card-container {
+    perspective: 1000px;
+    width: min(700px, 100%);
+    height: 389px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .card-container {
+        height: auto;
+        aspect-ratio: 700 / 389;
+    }
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.card-container.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front-ui, .card-back-ui {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 24px 70px rgba(0,0,0,0.3);
+}
+
+.card-front-ui {
+    background: #0d1f3c;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    color: white;
+}
+
+.card-front-ui .logo-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.card-front-ui .brand-name {
+    font-size: clamp(30px, 8vw, 62px);
+    font-weight: 900;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+}
+
+.card-front-ui .tagline {
+    font-size: clamp(10px, 2vw, 13.5px);
+    font-weight: 600;
+    color: rgba(255,255,255,0.58);
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+}
+
+.card-front-ui .divider {
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(74,163,198,0.5), transparent);
+}
+
+.card-front-ui .contact-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: clamp(10px, 1.5vw, 14px);
+    color: rgba(255,255,255,0.92);
+}
+
+.card-back-ui {
+    background: #f8f8f8;
+    transform: rotateY(180deg);
+    display: flex;
+}
+
+.card-back-ui .back-left {
+    width: 30%;
+    background: #0d1f3c;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10px;
+    color: white;
+}
+
+.card-back-ui .back-right {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    color: #0d1f3c;
+}
+
+.card-back-ui .person-name {
+    font-size: clamp(18px, 3vw, 22px);
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.card-back-ui .services-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+@media (max-width: 500px) {
+    .card-back-ui .services-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card-back-ui .service-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.card-back-ui .service-icon {
+    width: 24px;
+    height: 24px;
+    background: #0d1f3c;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-back-ui .service-label {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.qr-wrap {
+    background: white;
+    padding: 5px;
+    border-radius: 4px;
 }
