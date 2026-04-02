@@ -1013,6 +1013,7 @@ footer span a:hover {
     box-shadow: 0 24px 70px rgba(0,0,0,0.3);
 }
 
+/* Front UI Styling */
 .card-front-ui {
     background: #0d1f3c;
     display: flex;
@@ -1021,12 +1022,41 @@ footer span a:hover {
     align-items: center;
     gap: 14px;
     color: white;
+    position: relative;
+}
+
+.card-front-ui::before {
+    content: "";
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 240px;
+    height: 240px;
+    background: radial-gradient(circle, rgba(74, 163, 198, 0.12) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.card-front-ui::after {
+    content: "";
+    position: absolute;
+    bottom: -100px;
+    left: -60px;
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle, rgba(74, 163, 198, 0.07) 0%, transparent 70%);
+    border-radius: 50%;
 }
 
 .card-front-ui .logo-row {
     display: flex;
     align-items: center;
     gap: 20px;
+    z-index: 1;
+}
+
+.card-front-ui .year {
+    font-size: 30px;
+    font-weight: 800;
 }
 
 .card-front-ui .brand-name {
@@ -1034,6 +1064,7 @@ footer span a:hover {
     font-weight: 900;
     letter-spacing: 8px;
     text-transform: uppercase;
+    z-index: 1;
 }
 
 .card-front-ui .tagline {
@@ -1042,12 +1073,14 @@ footer span a:hover {
     color: rgba(255,255,255,0.58);
     letter-spacing: 3.5px;
     text-transform: uppercase;
+    z-index: 1;
 }
 
 .card-front-ui .divider {
-    width: 60%;
+    width: min(380px, 60%);
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(74,163,198,0.5), transparent);
+    z-index: 1;
 }
 
 .card-front-ui .contact-row {
@@ -1057,8 +1090,19 @@ footer span a:hover {
     justify-content: center;
     font-size: clamp(10px, 1.5vw, 14px);
     color: rgba(255,255,255,0.92);
+    font-weight: 600;
+    z-index: 1;
 }
 
+.card-front-ui .contact-row .ico {
+    color: #4aa3c6;
+}
+
+.card-front-ui .contact-row .sep {
+    color: rgba(74, 163, 198, 0.7);
+}
+
+/* Back UI Styling */
 .card-back-ui {
     background: #f8f8f8;
     transform: rotateY(180deg);
@@ -1067,18 +1111,44 @@ footer span a:hover {
 
 .card-back-ui .back-left {
     width: 30%;
+    min-width: 185px;
     background: #0d1f3c;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 10px;
+    padding: 26px 16px 22px;
     color: white;
+}
+
+.back-logo-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.back-logo-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.back-year {
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.back-brand {
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
 }
 
 .card-back-ui .back-right {
     flex: 1;
-    padding: 20px;
+    padding: 20px 24px 20px 26px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1089,44 +1159,49 @@ footer span a:hover {
 .card-back-ui .person-name {
     font-size: clamp(18px, 3vw, 22px);
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: 14px;
+}
+
+.services-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, #0d1f3c55, #4aa3c640, transparent);
+    margin-bottom: 14px;
 }
 
 .card-back-ui .services-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 10px;
-}
-
-@media (max-width: 500px) {
-    .card-back-ui .services-list {
-        grid-template-columns: 1fr;
-    }
 }
 
 .card-back-ui .service-item {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
 }
 
 .card-back-ui .service-icon {
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     background: #0d1f3c;
-    border-radius: 4px;
+    border-radius: 7px;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 }
 
 .card-back-ui .service-label {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 700;
+    letter-spacing: 0.3px;
+    line-height: 1.2;
 }
 
 .qr-wrap {
     background: white;
-    padding: 5px;
-    border-radius: 4px;
+    padding: 7px;
+    border-radius: 6px;
 }
+
