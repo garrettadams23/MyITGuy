@@ -594,6 +594,8 @@ section .title::after {
 .teams .swiper-slide .card img {
      height: 150px;
      width: 150px;
+     min-width: 150px;
+     min-height: 150px;
      object-fit: cover;
      border-radius: 50%;
      border: 5px solid var(--primary-color);
@@ -656,15 +658,18 @@ section .title::after {
      display: flex;
      height: 65px;
      align-items: center;
+     margin-bottom: 15px;
 }
 
 .contact .contact-content .row .info {
-     margin-left: 30px;
+     margin-left: 20px;
 }
 
 .contact .contact-content .row i {
      font-size: 25px;
      color: var(--primary-color);
+     width: 40px;
+     text-align: center;
 }
 
 .contact .contact-content .info .head {
