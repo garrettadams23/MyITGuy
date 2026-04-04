@@ -22,3 +22,16 @@
 
 - [x] **Fix Project Image Sizes**: Ensured all project card images have consistent 150x150 dimensions and square aspect ratio.
 - [x] **Align Contact Information**: Centered icons in a fixed-width container to line up the contact details (Name, Address, Email, Phone) perfectly.
+
+WHen the card flip it need to stay in place
+
+put "Garrett Adams's dot.Profile" to the left of the picture for dot.
+Put in https://dot.cards/garrettadams1010 as hyperlink that connect to the picture and "Garrett Adams's dot.Profile"
+
+Get rid of "Garrett Adams - Digital Business Card | My IT Guy | Washington, DC"
+
+pictures for project need to be fix so in sizing. All of them are overlapping.
+
+Fix the word sizing at the upper parts.
+
+Make a 7th project for the Studies Repo with website "https://garrettstudies.netlify.app/"
