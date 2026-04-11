@@ -35,3 +35,7 @@ pictures for project need to be fix so in sizing. All of them are overlapping.
 Fix the word sizing at the upper parts.
 
 Make a 7th project for the Studies Repo with website "https://garrettstudies.netlify.app/"
+
+next thing need to do:
+
+[Image CySA+-png.png] @Img/local/CSAP_Certified.pdf change the pdf to a .png. I want have these two add in like the other two badge. Both need to also have .webp @plan.md just make a plan for this
