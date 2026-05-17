@@ -20,22 +20,17 @@
 
 ## Phase 5: UI Polishing & Final Adjustments
 
-- [x] **Fix Project Image Sizes**: Ensured all project card images have consistent 150x150 dimensions and square aspect ratio.
-- [x] **Align Contact Information**: Centered icons in a fixed-width container to line up the contact details (Name, Address, Email, Phone) perfectly.
+- [x] **Fix Project Image Sizes**: Fixed CSS selector from `.swiper-slide .card` to `.swiper-slide.card` so styles correctly apply. Removed `min-width`/`min-height` constraints; images are now 150×150 circular with `max-width: 100%`.
+- [x] **Align Contact Information**: Centered icons in a fixed-width container.
+- [x] **Business Card Flip Stays in Place**: Moved perspective to the transform function (`perspective(2000px)`) for zero-shift flip animation.
+- [x] **dot.Profile Layout**: Title now appears to the left of the avatar image; both are wrapped in a hyperlink to `https://dot.cards/garrettadams1010`.
+- [x] **Remove Business Card Description**: Removed "Garrett Adams - Digital Business Card | My IT Guy | Washington, DC" from footer.
+- [x] **Fix Word Sizing (Upper Parts)**: Added responsive font-size rules for `.text-1` at ≤500px and ≤380px breakpoints; reduced project card `.text` font at ≤500px.
+- [x] **7th Project — Studies Repository**: Added project card linking to `https://garrettstudies.netlify.app/` using `Img/CySA+-png.png` as the image.
+- [x] **Fix Embedded HTML**: Extracted accidentally embedded CompTIA reference HTML from inside index.html into `studies.html`; restored the broken ORCID link text.
 
-WHen the card flip it need to stay in place
+## Phase 6: Badge Updates
 
-put "Garrett Adams's dot.Profile" to the left of the picture for dot.
-Put in https://dot.cards/garrettadams1010 as hyperlink that connect to the picture and "Garrett Adams's dot.Profile"
-
-Get rid of "Garrett Adams - Digital Business Card | My IT Guy | Washington, DC"
-
-pictures for project need to be fix so in sizing. All of them are overlapping.
-
-Fix the word sizing at the upper parts.
-
-Make a 7th project for the Studies Repo with website "https://garrettstudies.netlify.app/"
-
-next thing need to do:
-
-[Image CySA+-png.png] @Img/local/CSAP_Certified.pdf change the pdf to a .png. I want have these two add in like the other two badge. Both need to also have .webp @plan.md just make a plan for this
+- [x] **Convert CSAP_Certified.pdf to PNG**: Converted to `Img/local/CSAP_Certified.png` using ImageMagick at 300 DPI.
+- [x] **Create WebP versions**: Created `Img/local/CSAP_Certified.webp` (66KB) and `Img/local/CySA+-png.webp` (19KB).
+- [x] **Add two new badge entries**: Added CySA+ and CSAP badges to the `<!-- Badges Section -->` in `index.html`, matching the existing badge style.

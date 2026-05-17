@@ -559,7 +559,7 @@ section .title::after {
      background: var(--dark-background);
 }
 
-.teams .swiper-slide .card {
+.teams .swiper-slide.card {
      background: var(--secondary-background);
      border-radius: 6px;
      padding: 25px 35px;
@@ -569,11 +569,11 @@ section .title::after {
      height: 100%;
 }
 
-.teams .swiper-slide .card:hover {
+.teams .swiper-slide.card:hover {
      background: var(--primary-color);
 }
 
-.teams .swiper-slide .card .box {
+.teams .swiper-slide.card .box {
      display: flex;
      flex-direction: column;
      align-items: center;
@@ -581,28 +581,27 @@ section .title::after {
      transition: all 0.3s ease;
 }
 
-.teams .swiper-slide .card:hover .box {
+.teams .swiper-slide.card:hover .box {
      transform: scale(1.05);
 }
 
-.teams .swiper-slide .card .text {
-     font-size: 25px;
+.teams .swiper-slide.card .text {
+     font-size: 22px;
      font-weight: 500;
      margin: 10px 0 7px 0;
 }
 
-.teams .swiper-slide .card img {
+.teams .swiper-slide.card img {
      height: 150px;
      width: 150px;
-     min-width: 150px;
-     min-height: 150px;
+     max-width: 100%;
      object-fit: cover;
      border-radius: 50%;
      border: 5px solid var(--primary-color);
      transition: all 0.3s ease;
 }
 
-.teams .swiper-slide .card:hover img {
+.teams .swiper-slide.card:hover img {
      border-color: var(--light-text);
 }
 
@@ -768,6 +767,37 @@ footer span a {
 
 footer span a:hover {
      text-decoration: underline;
+}
+
+.discovery-mode-card {
+     display: inline-block;
+     margin: 10px auto;
+}
+
+.discovery-mode-link {
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     gap: 12px;
+     text-decoration: none;
+     color: var(--light-text);
+}
+
+.discovery-mode-link:hover {
+     opacity: 0.8;
+}
+
+.discovery-mode-title {
+     font-size: 14px;
+     font-weight: 600;
+     white-space: nowrap;
+}
+
+.discovery-mode-image-container img {
+     width: 44px;
+     height: 44px;
+     border-radius: 50%;
+     object-fit: cover;
 }
 
 /* ============================================
@@ -944,6 +974,9 @@ footer span a:hover {
 }
 
 @media (max-width: 500px) {
+     .home .home-content .text-1 {
+          font-size: 20px;
+     }
      .home .home-content .text-2 {
           font-size: 50px;
      }
@@ -961,6 +994,21 @@ footer span a:hover {
      .contact .right form .email {
           margin: 0;
      }
+     .teams .swiper-slide.card .text {
+          font-size: 18px;
+     }
+}
+
+@media (max-width: 380px) {
+     .home .home-content .text-1 {
+          font-size: 17px;
+     }
+     .home .home-content .text-2 {
+          font-size: 40px;
+     }
+     .home .home-content .text-3 {
+          font-size: 22px;
+     }
 }
 
 /* ============================================
@@ -975,11 +1023,11 @@ footer span a:hover {
 }
 
 .card-container {
-    perspective: 1000px;
     width: min(700px, 100%);
     height: 389px;
     margin: 0 auto;
     cursor: pointer;
+    user-select: none;
 }
 
 @media (max-width: 768px) {
@@ -994,12 +1042,13 @@ footer span a:hover {
     width: 100%;
     height: 100%;
     text-align: center;
-    transition: transform 0.8s;
+    transition: transform 0.8s ease;
     transform-style: preserve-3d;
+    transform-origin: center center;
 }
 
 .card-container.flipped .card-inner {
-    transform: rotateY(180deg);
+    transform: perspective(2000px) rotateY(180deg);
 }
 
 .card-front-ui, .card-back-ui {
