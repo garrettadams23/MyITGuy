@@ -551,6 +551,111 @@ section .title::after {
 .skills-content .right .Software::before { width: 70%; }
 .skills-content .right .Hardware::before { width: 95%; }
 
+/* GitHub code breakdown */
+.gh-section {
+     margin-bottom: 18px;
+}
+
+.gh-header {
+     display: flex;
+     justify-content: space-between;
+     align-items: baseline;
+     margin-bottom: 8px;
+}
+
+.gh-title {
+     font-weight: 600;
+     font-size: 13px;
+}
+
+.gh-title small {
+     font-weight: 400;
+     color: #888;
+     font-size: 11px;
+     margin-left: 6px;
+}
+
+.gh-meta {
+     font-size: 11px;
+     color: #888;
+}
+
+.gh-bar {
+     margin-bottom: 5px;
+}
+
+.gh-info {
+     display: flex;
+     justify-content: space-between;
+     font-size: 12px;
+     font-weight: 500;
+     margin-bottom: 2px;
+}
+
+.gh-info span:last-child {
+     color: var(--primary-color);
+}
+
+.gh-line {
+     height: 5px;
+     width: 100%;
+     background: lightgrey;
+     border-radius: 3px;
+     overflow: hidden;
+     position: relative;
+}
+
+.gh-fill {
+     position: absolute;
+     left: 0;
+     top: 0;
+     height: 100%;
+     border-radius: 3px;
+}
+
+.gh-source {
+     font-size: 10px;
+     color: #888;
+     margin-top: 5px;
+     line-height: 1.5;
+}
+
+.gh-divider {
+     height: 1px;
+     background: var(--light-grey);
+     margin: 14px 0 12px;
+}
+
+/* Skill chips */
+.skill-chips {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 7px;
+     margin-top: 18px;
+}
+
+.chip {
+     font-size: 11px;
+     font-weight: 500;
+     color: var(--primary-color);
+     border: 1px solid var(--primary-color);
+     border-radius: 9999px;
+     padding: 4px 12px;
+     transition: all 0.3s ease;
+     background: transparent;
+     cursor: default;
+}
+
+.chip:hover {
+     background: var(--primary-color);
+     color: var(--light-text);
+}
+
+.chip.solid {
+     background: var(--primary-color);
+     color: var(--light-text);
+}
+
 /* ============================================
     TEAMS SECTION
     ============================================ */
@@ -679,73 +784,73 @@ section .title::after {
      color: #333;
 }
 
-.contact .right form .fields {
+.form-grid {
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     gap: 12px;
+}
+
+.form-field {
      display: flex;
+     flex-direction: column;
+     gap: 5px;
 }
 
-.contact .right form .field,
-.contact .right form .fields .field {
-     height: 45px;
-     width: 100%;
-     margin-bottom: 15px;
+.form-label {
+     font-size: 11px;
+     color: #888;
+     text-transform: uppercase;
+     letter-spacing: 0.04em;
+     font-family: 'Poppins', sans-serif;
 }
 
-.contact .right form .textarea {
-     height: 80px;
-     width: 100%;
-}
-
-.contact .right form .name {
-     margin-right: 10px;
-}
-
-.contact .right form .email {
-     margin-left: 10px;
-}
-
-.contact .right form .field input,
-.contact .right form .textarea textarea {
-     height: 100%;
+.form-field input,
+.form-field textarea,
+.form-field select {
+     height: 40px;
      width: 100%;
      border: 1px solid lightgrey;
      border-radius: 6px;
-     outline: none;
-     padding: 0 15px;
-     font-size: 17px;
+     padding: 0 12px;
      font-family: 'Poppins', sans-serif;
-     transition: all 0.3s ease;
+     font-size: 13px;
+     outline: none;
+     background: var(--light-background);
+     color: var(--text-main);
+     transition: border-color 0.3s ease;
 }
 
-.contact .right form .field input:focus,
-.contact .right form .textarea textarea:focus {
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus {
      border-color: #b3b3b3;
 }
 
-.contact .right form .textarea textarea {
-     padding-top: 10px;
+.form-field textarea {
+     height: 110px;
+     padding: 8px 12px;
      resize: none;
 }
 
-.contact .right form .button {
-     height: 47px;
-     width: 170px;
+.form-span2 {
+     grid-column: 1 / -1;
 }
 
-.contact .right form .button button {
-     width: 100%;
-     height: 100%;
-     border: 2px solid var(--primary-color);
+.form-field button[type="submit"] {
      background: var(--primary-color);
      color: var(--light-text);
-     outline: none;
-     font-size: 20px;
-     font-weight: 500;
+     border: 2px solid var(--primary-color);
      border-radius: 6px;
+     padding: 10px 28px;
+     font-size: 15px;
+     font-weight: 500;
      cursor: pointer;
+     font-family: 'Poppins', sans-serif;
      transition: all 0.3s ease;
+     width: fit-content;
 }
 
-.contact .right form .button button:hover {
+.form-field button[type="submit"]:hover {
      color: var(--primary-color);
      background: none;
 }
@@ -803,12 +908,19 @@ footer span a:hover {
 /* ============================================
     BADGE & ANIMATIONS
     ============================================ */
+.badges .max-width {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: center;
+     gap: 28px;
+     padding: 40px 0;
+}
+
 .badge {
      background-color: #1565cd;
      height: 125px;
+     width: 125px;
      border-radius: 50%;
-     margin-top: 20%;
-     margin-left: 30%;
      overflow: hidden;
      box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
      animation: Rotate 3s ease-in-out, levitate 2s linear infinite 3s;
@@ -817,17 +929,14 @@ footer span a:hover {
 @keyframes Rotate {
      0% {
           box-shadow: 0px 0px 0px var(--light-background);
-          margin-left: -30%;
-          transform: rotate(0deg);
+          transform: translateX(-200%) rotate(0deg);
      }
      75% {
           box-shadow: 0px 0px 2px 2px #ccc;
-          margin-left: 50%;
-          transform: rotate(460deg);
+          transform: translateX(8%) rotate(460deg);
      }
      100% {
-          margin-left: 30%;
-          transform: rotate(360deg);
+          transform: translateX(0%) rotate(360deg);
      }
 }
 
@@ -953,6 +1062,12 @@ footer span a:hover {
           width: 100%;
           margin-bottom: 35px;
      }
+     .form-grid {
+          grid-template-columns: 1fr;
+     }
+     .form-span2 {
+          grid-column: 1;
+     }
 }
 
 @media (max-width: 690px) {
@@ -1028,6 +1143,7 @@ footer span a:hover {
     margin: 0 auto;
     cursor: pointer;
     user-select: none;
+    outline: none;
 }
 
 @media (max-width: 768px) {

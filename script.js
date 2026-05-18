@@ -95,8 +95,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // Business Card Flip Logic
     const flipCard = document.getElementById('flip-card');
     if (flipCard) {
-        flipCard.addEventListener('click', () => {
+        flipCard.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
             flipCard.classList.toggle('flipped');
+            flipCard.blur();
         });
     }
 
