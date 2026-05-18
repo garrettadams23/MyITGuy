@@ -20,6 +20,11 @@
      text-decoration: none;
 }
 
+a {
+     color: var(--light-text);
+     text-decoration: underline;
+}
+
 body {
     background: var(--light-background);
     color: var(--text-main);
@@ -219,6 +224,7 @@ section .title::after {
      color: var(--light-text);
      font-size: 35px;
      font-weight: 600;
+     text-decoration: none;
 }
 
 .navbar .logo a span {
@@ -242,6 +248,7 @@ section .title::after {
      font-weight: 500;
      margin-left: 25px;
      transition: color 0.3s ease;
+     text-decoration: none;
 }
 
 .navbar .menu li a:hover {
@@ -357,6 +364,7 @@ section .title::after {
      border-radius: 6px;
      border: 2px solid var(--primary-color);
      transition: all 0.3s ease;
+     text-decoration: none;
 }
 
 .home .home-content a:hover {
@@ -411,6 +419,7 @@ section .title::after {
      border-radius: 6px;
      border: 2px solid var(--primary-color);
      transition: all 0.3s ease;
+     text-decoration: none;
 }
 
 .about .about-content .right a:hover {
@@ -506,6 +515,7 @@ section .title::after {
      border-radius: 6px;
      border: 2px solid var(--primary-color);
      transition: all 0.3s ease;
+     text-decoration: none;
 }
 
 .skills .skills-content .left a:hover {
@@ -684,6 +694,11 @@ section .title::after {
      align-items: center;
      justify-content: center;
      transition: all 0.3s ease;
+}
+
+.teams .swiper-slide.card .box a {
+     text-decoration: none;
+     color: var(--light-text);
 }
 
 .teams .swiper-slide.card:hover .box {
@@ -879,7 +894,8 @@ footer span a:hover {
      margin: 10px auto;
 }
 
-.discovery-mode-link {
+.discovery-mode-link,
+.badge-link {
      display: flex;
      flex-direction: row;
      align-items: center;
