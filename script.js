@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const scrollUpBtn = document.querySelector('.scroll-up-btn');
     const html = document.documentElement;
     const menu = document.querySelector('.navbar .menu');
-    const menuBtn = document.querySelector('.menu-btn');
+    const menuBtn = document.querySelector('div.menu-btn');
     const menuBtnIcon = document.querySelector('.menu-btn i');
 
     // Sticky navbar and scroll-up button script

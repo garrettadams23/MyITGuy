@@ -986,6 +986,7 @@ footer span a:hover {
 .divcont1, .divcont2, .divcont3 {
      position: fixed;
      width: 200px;
+     height: 44px;
      background-color: black;
      right: -176px;
      transition: right 0.3s ease;
@@ -993,15 +994,16 @@ footer span a:hover {
 }
 
 .divcont1 { top: 70px; }
-.divcont2 { top: 125px; }
-.divcont3 { top: 175px; }
+.divcont2 { top: 114px; }
+.divcont3 { top: 158px; }
 
 .divcont1 p, .divcont2 p, .divcont3 p {
      display: flex;
      align-items: center;
+     height: 100%;
      gap: 10px;
      color: white;
-     padding: 12px 14px 12px 4px;
+     padding: 0 14px 0 4px;
      letter-spacing: 4px;
      white-space: nowrap;
 }

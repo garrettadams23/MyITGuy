@@ -69,6 +69,12 @@ Corrections to apply across `index.html`:
 - [x] **Floating sidebar alignment**: Restructured `.divcont1/2/3` icons into fixed-size `.side-icon` containers and adjusted the peek width so only the icon shows in the collapsed state (text fully hidden until hover), making all three sidebar tabs behave consistently.
 - [x] **Business card mobile fixes**: Added a `max-width: 600px` media query that gives `.card-container` a taller `aspect-ratio` (4/5) and scales down the front/back UI elements (logo SVGs, QR code, service icons/labels) so content isn't clipped by `overflow: hidden` on phones. Also fixed oversized back-face service icon SVGs (no explicit size, were rendering at default 300x150) and made the QR code responsive.
 
+## Phase 9: Badge Links, Mobile Menu & Sidebar Bar Fixes
+
+- [x] **Badge hyperlinks**: `<img class="badge">` elements used a non-functional custom `hyperlink="..."` attribute (HTML has no such attribute on `<img>`). Wrapped each badge image in an `<a target="_blank" rel="noopener noreferrer">` using the current Credly public URLs supplied by the user, mapped by badge name: Security+ → `cc8065d2-...`, A+ → `cfa0e8d7-...`, CySA+ → `6b56a78d-...`, CSAP → `f41bb414-...`.
+- [x] **Mobile hamburger menu not opening**: `script.js` selected `document.querySelector('.menu-btn')`, which matched the FIRST element with that class — a desktop nav `<a class="menu-btn">` link, not the hamburger `<div class="menu-btn" role="button">`. Toggle listener was bound to the wrong element, so tapping the bars icon did nothing. Fix: changed selector to `document.querySelector('div.menu-btn')` to target the hamburger button specifically.
+- [x] **Floating sidebar gaps**: `.divcont1/2/3` had `top: 70px/125px/175px` but each div's rendered height (~variable, based on `<p>` padding `12px 14px 12px 4px` plus content) didn't evenly divide those offsets, leaving visible gaps between the three black slide-out tabs. Fix: gave each `.divcont` an explicit `height: 44px`, moved the `<p>` padding to horizontal-only (`0 14px 0 4px`) with `height: 100%` and flex centering, and set contiguous `top` values (`70px`, `114px`, `158px` — each exactly 44px apart) so the three tabs form one seamless black bar while still sliding out independently on hover.
+
 ## Future Ideas
 
 - [ ] **Webhook Notifications**: Set up a webhook action so that when something is submitted to the SQL server, a notification is sent. Need to determine the notification mechanism (email, push, etc.).
