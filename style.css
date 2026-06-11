@@ -795,8 +795,8 @@ section .title::after {
      font-weight: 500;
 }
 
-.contact .contact-content .info .sub-title {
-     color: #333;
+.contact .contact-content .info .sub-title a {
+     color: var(--text-main);
 }
 
 .form-grid {
@@ -889,12 +889,15 @@ footer span a:hover {
      text-decoration: underline;
 }
 
-.discovery-mode-card {
-     display: inline-block;
-     margin: 10px auto;
+.footer-links {
+     display: flex;
+     flex-wrap: wrap;
+     align-items: center;
+     justify-content: center;
+     gap: 20px;
+     margin-top: 15px;
 }
 
-.discovery-mode-link,
 .badge-link {
      display: flex;
      flex-direction: row;
@@ -902,10 +905,16 @@ footer span a:hover {
      gap: 12px;
      text-decoration: none;
      color: var(--light-text);
+     transition: opacity 0.3s ease;
 }
 
-.discovery-mode-link:hover {
+.badge-link:hover {
      opacity: 0.8;
+}
+
+.badge-link .fa-stack-overflow {
+     font-size: 26px;
+     color: #f48024;
 }
 
 .discovery-mode-title {
@@ -978,8 +987,9 @@ footer span a:hover {
      position: fixed;
      width: 200px;
      background-color: black;
-     right: -173px;
+     right: -176px;
      transition: right 0.3s ease;
+     overflow: hidden;
 }
 
 .divcont1 { top: 70px; }
@@ -987,13 +997,37 @@ footer span a:hover {
 .divcont3 { top: 175px; }
 
 .divcont1 p, .divcont2 p, .divcont3 p {
+     display: flex;
+     align-items: center;
+     gap: 10px;
      color: white;
-     padding: 25px 15px 10px 10px;
+     padding: 12px 14px 12px 4px;
      letter-spacing: 4px;
+     white-space: nowrap;
 }
 
 .divcont1:hover, .divcont2:hover, .divcont3:hover {
      right: 0;
+}
+
+.side-icon {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     width: 20px;
+     height: 20px;
+     flex-shrink: 0;
+}
+
+.side-icon img {
+     max-width: 20px;
+     max-height: 20px;
+     object-fit: contain;
+}
+
+.side-icon .fa-linkedin {
+     font-size: 18px;
+     color: #0a66c2;
 }
 
 /* ============================================
@@ -1139,6 +1173,12 @@ footer span a:hover {
      }
      .home .home-content .text-3 {
           font-size: 22px;
+     }
+     .footer-links {
+          gap: 12px;
+     }
+     .discovery-mode-title {
+          white-space: normal;
      }
 }
 
@@ -1373,6 +1413,11 @@ footer span a:hover {
     flex-shrink: 0;
 }
 
+.card-back-ui .service-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
 .card-back-ui .service-label {
     font-size: 14px;
     font-weight: 700;
@@ -1384,5 +1429,93 @@ footer span a:hover {
     background: white;
     padding: 7px;
     border-radius: 6px;
+    line-height: 0;
+}
+
+.qr-wrap canvas,
+.qr-wrap img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Give the card more height on mobile so front/back content
+   isn't clipped by overflow: hidden */
+@media (max-width: 600px) {
+    .card-container {
+        aspect-ratio: 4 / 5;
+    }
+
+    .card-front-ui {
+        gap: 8px;
+    }
+
+    .card-front-ui .logo-row svg {
+        width: 56px;
+        height: 56px;
+    }
+
+    .card-front-ui .year {
+        font-size: 18px;
+    }
+
+    .card-front-ui .brand-name {
+        font-size: clamp(20px, 9vw, 36px);
+        letter-spacing: 4px;
+    }
+
+    .card-front-ui .tagline {
+        letter-spacing: 2px;
+    }
+
+    .card-back-ui .back-left {
+        min-width: 120px;
+        padding: 16px 10px;
+    }
+
+    .back-logo-row svg {
+        width: 32px;
+        height: 37px;
+    }
+
+    .back-brand {
+        font-size: 12px;
+        letter-spacing: 2px;
+    }
+
+    #qrcode {
+        width: 80px;
+        height: 80px;
+    }
+
+    .card-back-ui .back-right {
+        padding: 16px 14px;
+    }
+
+    .card-back-ui .person-name {
+        font-size: 15px;
+        margin-bottom: 8px;
+    }
+
+    .services-divider {
+        margin-bottom: 8px;
+    }
+
+    .card-back-ui .services-list {
+        gap: 6px;
+    }
+
+    .card-back-ui .service-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .card-back-ui .service-icon svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    .card-back-ui .service-label {
+        font-size: 11px;
+    }
 }
 

@@ -48,9 +48,7 @@
     />
     <link
       rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-      crossorigin="anonymous"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
 
     <!-- Library Stylesheets -->
@@ -127,13 +125,14 @@
     <aside class="social-sidebar">
       <div class="divcont1">
         <p>
-          <img
-            src="Img/local/supportwave-logo.webp"
-            alt="Supportwave logo"
-            style="height: 20px; vertical-align: middle"
-            loading="lazy"
-            decoding="async"
-          />
+          <span class="side-icon">
+            <img
+              src="Img/local/supportwave-logo.webp"
+              alt="Supportwave logo"
+              loading="lazy"
+              decoding="async"
+            />
+          </span>
           <a
             href="https://app.supportwave.com/Nerd?token=b073442e-bf07-480e-b095-94ff59d6ae7c"
             >Supportwave®</a
@@ -142,7 +141,9 @@
       </div>
       <div class="divcont2">
         <p>
-          <i class="fa fa-linkedin" aria-hidden="true"></i>
+          <span class="side-icon">
+            <i class="fab fa-linkedin" aria-hidden="true"></i>
+          </span>
           <a
             href="https://www.linkedin.com/in/garrettadams1010gmailcom?trk=contact-info"
             >LinkedIn®</a
@@ -151,13 +152,14 @@
       </div>
       <div class="divcont3">
         <p>
-          <img
-            src="Img/local/fiverr-logo.webp"
-            alt="Fiverr logo"
-            style="height: 20px; vertical-align: middle"
-            loading="lazy"
-            decoding="async"
-          />
+          <span class="side-icon">
+            <img
+              src="Img/local/fiverr-logo.webp"
+              alt="Fiverr logo"
+              loading="lazy"
+              decoding="async"
+            />
+          </span>
           <a href="https://www.fiverr.com/garrettadams10?public_mode=true"
             >Fiverr®</a
           >
@@ -561,7 +563,7 @@
               <div class="swiper-slide card">
                 <div class="box">
                   <img
-                    src="Img/CySA+-png.png"
+                    src="Img/local/CySA+-png.webp"
                     alt="Studies Repository"
                     loading="lazy"
                     decoding="async"
@@ -957,31 +959,23 @@
           | <span class="far fa-copyright"></span> 2025 All rights reserved.
         </p>
 
-        <a
-          class="badge-link stackoverflow-badge"
-          href="https://stackoverflow.com/users/32138546/garrett-adams"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            src="https://stackoverflow.com/users/flair/32138546.png?theme=dark"
-            width="208"
-            height="58"
-            alt="profile for Garrett Adams at Stack Overflow"
-            title="profile for Garrett Adams at Stack Overflow"
-            loading="lazy"
-            decoding="async"
-          />
-        </a>
+        <div class="footer-links">
+          <a
+            class="badge-link"
+            href="https://stackoverflow.com/users/32138546/garrett-adams"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fab fa-stack-overflow" aria-hidden="true"></i>
+            <span class="discovery-mode-title">Stack Overflow</span>
+          </a>
 
-        <div class="discovery-mode-card">
           <a
             href="https://dot.cards/garrettadams1010"
             target="_blank"
             rel="noopener noreferrer"
-            class="discovery-mode-link"
+            class="badge-link"
           >
-            <h3 class="discovery-mode-title">Garrett Adams's dot.Profile</h3>
             <div class="discovery-mode-image-container">
               <img
                 alt="Garrett Adams profile avatar"
@@ -990,31 +984,30 @@
                 decoding="async"
               />
             </div>
+            <span class="discovery-mode-title">Garrett Adams's dot.Profile</span>
+          </a>
+
+          <a
+            id="cy-effective-orcid-url"
+            class="badge-link"
+            href="https://orcid.org/0009-0002-4527-8850"
+            target="orcid.widget"
+            rel="me noopener noreferrer"
+          >
+            <img
+              src="Img/local/orcid-icon.webp"
+              style="width: 24px"
+              alt="ORCID iD icon"
+              loading="lazy"
+              decoding="async"
+            />
+            <span class="discovery-mode-title">ORCID: 0009-0002-4527-8850</span>
           </a>
         </div>
-
-        <a
-          id="cy-effective-orcid-url"
-          class="underline"
-          href="https://orcid.org/0009-0002-4527-8850"
-          target="orcid.widget"
-          rel="me noopener noreferrer"
-          style="vertical-align: top"
-        >
-          <img
-            src="Img/local/orcid-icon.webp"
-            style="width: 1em; margin-inline-start: 0.5em"
-            alt="ORCID iD icon"
-            loading="lazy"
-            decoding="async"
-          />
-          https://orcid.org/0009-0002-4527-8850
-        </a>
       </div>
     </footer>
 
     <!-- Scripts -->
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
