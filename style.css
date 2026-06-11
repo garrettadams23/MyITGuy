@@ -405,7 +405,7 @@ section .title::after {
 }
 
 .about .about-content .right p {
-     text-align: justify;
+     text-align: left;
 }
 
 .about .about-content .right a {
@@ -501,7 +501,7 @@ section .title::after {
 }
 
 .skills .skills-content .left p {
-     text-align: justify;
+     text-align: left;
 }
 
 .skills .skills-content .left a {
@@ -766,7 +766,7 @@ section .title::after {
 }
 
 .contact .contact-content .left p {
-     text-align: justify;
+     text-align: left;
 }
 
 .contact .contact-content .left .icons {
