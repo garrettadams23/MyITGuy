@@ -1,0 +1,37 @@
+name: Language Percentage Breakdown
+
+on:
+  push:
+    branches: [ "Testing" ]
+  pull_request:
+    branches: [ "Testing" ]
+  workflow_dispatch:
+
+jobs:
+  analyze-code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+
+      - name: Install GitHub Linguist
+        run: gem install github-linguist
+
+      - name: Calculate and Output Percentages
+        run: |
+          echo "Analyzing repository languages..."
+          github-linguist --breakdown > linguist_stats.txt
+          
+          # Print to standard workflow log
+          cat linguist_stats.txt
+          
+          # Publish to GitHub Actions Step Summary UI
+          echo "### 📊 Code Language Breakdown" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`text" >> $GITHUB_STEP_SUMMARY
+          cat linguist_stats.txt >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY

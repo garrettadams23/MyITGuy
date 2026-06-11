@@ -1,37 +1,31 @@
-/*import pg from "pg";
-const { Client } = pg;
-
-export async function handler() {
-  const client = new Client({ connectionString: process.env.DATABASE_URL });
-  await client.connect();
-  const res = await client.query("select now() as now");
-  await client.end();
-
-  return {
-    statusCode: 200,
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify(res.rows[0])
-  };
-}
-*/
 import { neon } from "@neondatabase/serverless";
 
-export async function handler() {
-  const sql = neon(process.env.DATABASE_URL);
-  const rows = await sql`select now() as now`;
+export async function handler(event, context) {
+  if (!process.env.DATABASE_URL) {
+    return {
+      statusCode: 500,
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ error: "DATABASE_URL environment variable is not set" }),
+    };
+  }
 
-  return {
-    statusCode: 200,
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify(rows[0]),
-  };
+  try {
+    const sql = neon(process.env.DATABASE_URL);
+    const rows = await sql`select now() as now`;
+
+    return {
+      statusCode: 200,
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ 
+        message: "Database test successful", 
+        db_time: rows[0].now 
+      }),
+    };
+  } catch (error) {
+    return {
+      statusCode: 500,
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ error: "Failed to connect to database", details: error.message }),
+    };
+  }
 }
-
-
-
-exports.handler = async function(event, context) {
-  return {
-    statusCode: 200,
-    body: JSON.stringify({ message: "Database test successful" }),
-  };
-};
