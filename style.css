@@ -1222,7 +1222,7 @@ footer span a:hover {
 }
 
 .card-container.flipped .card-inner {
-    transform: perspective(2000px) rotateY(180deg);
+    transform: perspective(2000px) rotateY(-180deg);
 }
 
 .card-front-ui, .card-back-ui {
