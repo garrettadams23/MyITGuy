@@ -85,6 +85,10 @@ Corrections to apply across `index.html`:
 - [x] **Contact form submission hook**: Added `netlify/functions/submission-created.js`, which Netlify automatically invokes for every submission to the `contact` form (`data-netlify="true"` in `index.html`). The function (a) creates `contact_submissions` in the Neon database (if missing) and inserts each submission (name, subject, email, phone, location, rating, message, timestamp), and (b) emails a notification via the Resend API to `garrettadams1010@gmail.com` whenever `RESEND_API_KEY` is configured.
 - [ ] **Enable email notifications**: To activate the email side, add a `RESEND_API_KEY` environment variable in Netlify site settings (create a free account at resend.com). Optionally set `NOTIFY_TO_EMAIL` / `NOTIFY_FROM_EMAIL` to override the defaults. `DATABASE_URL` is already configured, so submissions are stored regardless.
 
+## Phase 12: Scheduling Widget Swap
+
+- [x] **Replace Calendly with Google Calendar Appointment Scheduling**: Swapped the Calendly inline widget on the business card section for a Google Calendar appointment scheduling `<iframe>` (`calendar.google.com/calendar/appointments/...`).
+
 ## Future Ideas
 
 - [ ] **garrettstudies.netlify.app symbol**: User asked for "a symbol" above the content on `garrettstudies.netlify.app` (photo 7 of mobile QA). This site does not appear to be part of the `garrettadams23/myitguy` repo (no `studies.html` found in this repo's history) — needs to be addressed in its own repo.
