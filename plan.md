@@ -80,7 +80,11 @@ Corrections to apply across `index.html`:
 - [x] **Business card back face mispositioned/covered when flipped**: `.card-front-ui, .card-back-ui` were `position: absolute` but had no `top`/`left` set, so `.card-back-ui` fell back to its "static position" — rendered ~430px BELOW the front face (overlapping the "Click to Flip" text and the Calendly inline widget below it) instead of stacking exactly on top of the front face. This caused the flipped card to appear mostly blank/empty with its content covered by the Calendly widget. Fix: added `top: 0; left: 0;` to `.card-front-ui, .card-back-ui` so both faces overlay the same position, fixing the flip and removing the dead space.
 - [x] **Project 7 image replaced**: Swapped the "Studies Repository" project card image from the reused `Img/local/CySA+-png.webp` badge to a new `Img/local/studies-repo-thumb.webp`, cropped from a screenshot of the "Optimized Study Routine: 4 Pillars for Success" infographic on `garrettstudies.netlify.app` (square crop, resized to 400x400 for the circular card thumbnail).
 
+## Phase 11: Contact Form Webhook → Database + Email Notification
+
+- [x] **Contact form submission hook**: Added `netlify/functions/submission-created.js`, which Netlify automatically invokes for every submission to the `contact` form (`data-netlify="true"` in `index.html`). The function (a) creates `contact_submissions` in the Neon database (if missing) and inserts each submission (name, subject, email, phone, location, rating, message, timestamp), and (b) emails a notification via the Resend API to `garrettadams1010@gmail.com` whenever `RESEND_API_KEY` is configured.
+- [ ] **Enable email notifications**: To activate the email side, add a `RESEND_API_KEY` environment variable in Netlify site settings (create a free account at resend.com). Optionally set `NOTIFY_TO_EMAIL` / `NOTIFY_FROM_EMAIL` to override the defaults. `DATABASE_URL` is already configured, so submissions are stored regardless.
+
 ## Future Ideas
 
-- [ ] **Webhook Notifications**: Set up a webhook action so that when something is submitted to the SQL server, a notification is sent. Need to determine the notification mechanism (email, push, etc.).
 - [ ] **garrettstudies.netlify.app symbol**: User asked for "a symbol" above the content on `garrettstudies.netlify.app` (photo 7 of mobile QA). This site does not appear to be part of the `garrettadams23/myitguy` repo (no `studies.html` found in this repo's history) — needs to be addressed in its own repo.
