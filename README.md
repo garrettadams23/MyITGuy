@@ -21,3 +21,5 @@ The following serverless functions are available in the `/netlify/functions` dir
 
 - `health.js`: A simple health-check endpoint.
 - `db-test.js`: A placeholder endpoint for database connection testing.
+- `submission-created.js`: Stores contact form submissions in Neon and sends an email notification.
+- `supabase-example.js`: A template for authenticated endpoints using `@supabase/server` (see `.env.example` for required config).
