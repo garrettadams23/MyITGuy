@@ -1,10 +1,13 @@
-import { neon } from "@neondatabase/serverless";
+import { withSupabase } from "@supabase/server";
 
 // Netlify automatically invokes this function for every submission to any
-// Netlify Form on the site (the "contact" form in index.html).
-export async function handler(event) {
+// Netlify Form on the site (the "contact" form in index.html). Netlify
+// calls this server-to-server with no Authorization header, so it runs in
+// "none" auth mode and writes through ctx.supabaseAdmin (service role,
+// bypasses RLS) since contact_submissions has RLS enabled with no policies.
+export default withSupabase({ auth: "none" }, async (req, ctx) => {
   try {
-    const body = JSON.parse(event.body || "{}");
+    const body = await req.json();
     const data = (body.payload || body).data || {};
 
     const {
@@ -17,27 +20,18 @@ export async function handler(event) {
       message = "",
     } = data;
 
-    if (process.env.NEON_DB_URL) {
-      const sql = neon(process.env.NEON_DB_URL);
+    const { error } = await ctx.supabaseAdmin.from("contact_submissions").insert({
+      name,
+      subject,
+      email,
+      phone,
+      location,
+      rating: rating ? parseInt(rating, 10) : null,
+      message,
+    });
 
-      await sql`
-        CREATE TABLE IF NOT EXISTS contact_submissions (
-          id SERIAL PRIMARY KEY,
-          name TEXT,
-          subject TEXT,
-          email TEXT,
-          phone TEXT,
-          location TEXT,
-          rating INTEGER,
-          message TEXT,
-          created_at TIMESTAMPTZ DEFAULT now()
-        )
-      `;
-
-      await sql`
-        INSERT INTO contact_submissions (name, subject, email, phone, location, rating, message)
-        VALUES (${name}, ${subject}, ${email}, ${phone}, ${location}, ${rating ? parseInt(rating, 10) : null}, ${message})
-      `;
+    if (error) {
+      console.error("contact_submissions insert error:", error);
     }
 
     if (process.env.RESEND_API_KEY) {
@@ -64,9 +58,9 @@ export async function handler(event) {
       });
     }
 
-    return { statusCode: 200, body: "ok" };
+    return new Response("ok", { status: 200 });
   } catch (error) {
     console.error("submission-created error:", error);
-    return { statusCode: 200, body: "ok" };
+    return new Response("ok", { status: 200 });
   }
-}
+});
