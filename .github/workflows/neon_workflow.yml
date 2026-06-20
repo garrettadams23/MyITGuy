@@ -50,18 +50,18 @@ jobs:
   # The step above creates a new Neon branch.
   # You may want to do something with the new branch, such as run migrations, run tests
   # on it, or send the connection details to a hosting platform environment.
-  # The branch DATABASE_URL is available to you via:
+  # The branch NEON_DB_URL is available to you via:
   # "${{ steps.create_neon_branch.outputs.db_url_with_pooler }}".
-  # It's important you don't log the DATABASE_URL as output as it contains a username and
+  # It's important you don't log the NEON_DB_URL as output as it contains a username and
   # password for your database.
   # For example, you can uncomment the lines below to run a database migration command:
   #      - name: Run Migrations
   #        run: npm run db:migrate
   #        env:
   #          # to use pooled connection
-  #          DATABASE_URL: "${{ steps.create_neon_branch.outputs.db_url_with_pooler }}"
+  #          NEON_DB_URL: "${{ steps.create_neon_branch.outputs.db_url_with_pooler }}"
   #          # OR to use unpooled connection
-  #          # DATABASE_URL: "${{ steps.create_neon_branch.outputs.db_url }}"
+  #          # NEON_DB_URL: "${{ steps.create_neon_branch.outputs.db_url }}"
 
   # Following the step above, which runs database migrations, you may want to check
   # for schema changes in your database. We recommend using the following action to

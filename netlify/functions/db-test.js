@@ -1,16 +1,16 @@
 import { neon } from "@neondatabase/serverless";
 
 export async function handler(event, context) {
-  if (!process.env.DATABASE_URL) {
+  if (!process.env.NEON_DB_URL) {
     return {
       statusCode: 500,
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ error: "DATABASE_URL environment variable is not set" }),
+      body: JSON.stringify({ error: "NEON_DB_URL environment variable is not set" }),
     };
   }
 
   try {
-    const sql = neon(process.env.DATABASE_URL);
+    const sql = neon(process.env.NEON_DB_URL);
     const rows = await sql`select now() as now`;
 
     return {
