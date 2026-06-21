@@ -34,8 +34,8 @@ jobs:
           fi
 
       - name: Push config (Auth, API, Storage settings from config.toml)
-        run: supabase config push
+        run: supabase config push --yes
 
       - name: Push database migrations
         if: env.SUPABASE_DB_PASSWORD != ''
-        run: supabase db push
+        run: supabase db push --yes
