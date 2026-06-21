@@ -83,11 +83,17 @@ Corrections to apply across `index.html`:
 ## Phase 11: Contact Form Webhook → Database + Email Notification
 
 - [x] **Contact form submission hook**: Added `netlify/functions/submission-created.js`, which Netlify automatically invokes for every submission to the `contact` form (`data-netlify="true"` in `index.html`). The function (a) creates `contact_submissions` in the Neon database (if missing) and inserts each submission (name, subject, email, phone, location, rating, message, timestamp), and (b) emails a notification via the Resend API to `garrettadams1010@gmail.com` whenever `RESEND_API_KEY` is configured.
-- [ ] **Enable email notifications**: To activate the email side, add a `RESEND_API_KEY` environment variable in Netlify site settings (create a free account at resend.com). Optionally set `NOTIFY_TO_EMAIL` / `NOTIFY_FROM_EMAIL` to override the defaults. `DATABASE_URL` is already configured, so submissions are stored regardless.
+- [ ] **Enable email notifications**: To activate the email side, add a `RESEND_API_KEY` environment variable in Netlify site settings (create a free account at resend.com). Optionally set `NOTIFY_TO_EMAIL` / `NOTIFY_FROM_EMAIL` to override the defaults. `NEON_DB_URL` is already configured, so submissions are stored regardless.
 
 ## Phase 12: Scheduling Widget Swap
 
 - [x] **Replace Calendly with Google Calendar Appointment Scheduling**: Swapped the Calendly inline widget on the business card section for a Google Calendar appointment scheduling `<iframe>` (`calendar.google.com/calendar/appointments/...`).
+
+## Phase 13: Migrate Contact Form Storage to Supabase
+
+- [x] **Replace Neon with Supabase Postgres**: `submission-created.js` and `db-test.js` now use `@supabase/server`'s `ctx.supabaseAdmin` instead of `@neondatabase/serverless`. The `contact_submissions` table (with RLS enabled and no policies, so only the service-role client can touch it) is defined in `supabase/migrations/20260620000000_create_contact_submissions.sql` and applied via the existing `supabase-config-push.yml` workflow's `db push` step, instead of the old request-time `CREATE TABLE IF NOT EXISTS`.
+- [x] **Remove Neon entirely**: Deleted `.github/workflows/neon_workflow.yml` (branch-per-PR preview databases), removed `@neondatabase/serverless` from `package.json`, and dropped `NEON_DB_URL` from `.env.example` and `sync-secrets-to-netlify.yml`.
+- [ ] **Apply the migration and redeploy**: The live Netlify Functions still need redeploying with this code, and the `contact_submissions` table needs to actually exist in Supabase — run the "Push Supabase config" workflow (`supabase-config-push.yml`) to apply the new migration before the contact form will work again. The now-unused `NEON_DB_URL`/`NEON_API_KEY`/`NEON_PROJECT_ID` GitHub secrets/variables can be deleted once this is confirmed working.
 
 ## Future Ideas
 

@@ -1,31 +1,24 @@
-import { neon } from "@neondatabase/serverless";
+import { withSupabase } from "@supabase/server";
 
-export async function handler(event, context) {
-  if (!process.env.DATABASE_URL) {
-    return {
-      statusCode: 500,
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ error: "DATABASE_URL environment variable is not set" }),
-    };
-  }
-
+// Verifies the Supabase connection/credentials are working by counting rows
+// in contact_submissions via ctx.supabaseAdmin (RLS has no policies, so only
+// the service-role client can read it) without returning any row data.
+export default withSupabase({ auth: "none" }, async (_req, ctx) => {
   try {
-    const sql = neon(process.env.DATABASE_URL);
-    const rows = await sql`select now() as now`;
+    const { count, error } = await ctx.supabaseAdmin
+      .from("contact_submissions")
+      .select("*", { count: "exact", head: true });
 
-    return {
-      statusCode: 200,
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ 
-        message: "Database test successful", 
-        db_time: rows[0].now 
-      }),
-    };
+    if (error) throw error;
+
+    return Response.json({
+      message: "Database test successful",
+      contact_submissions_count: count,
+    });
   } catch (error) {
-    return {
-      statusCode: 500,
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ error: "Failed to connect to database", details: error.message }),
-    };
+    return Response.json(
+      { error: "Failed to connect to database", details: error.message },
+      { status: 500 },
+    );
   }
-}
+});
