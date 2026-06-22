@@ -1,0 +1,42 @@
+name: Push Supabase config
+
+# Manual trigger only - this pushes supabase/config.toml (Auth settings like the
+# Resend SMTP config, API settings, etc.) to the live Supabase project, which
+# OVERWRITES whatever is currently set there with what's committed in this repo.
+# Review supabase/config.toml before running this for the first time so you don't
+# clobber settings you only configured via the Supabase dashboard so far.
+#
+# Migrations in supabase/migrations/*.sql (none exist yet) are pushed too, but
+# only if SUPABASE_DB_PASSWORD is set - that step is skipped otherwise.
+on:
+  workflow_dispatch:
+
+jobs:
+  push:
+    name: Push config and migrations to Supabase
+    runs-on: ubuntu-latest
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
+      RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: supabase/setup-cli@v2
+        with:
+          version: latest
+
+      - name: Link project
+        run: |
+          if [ -n "$SUPABASE_DB_PASSWORD" ]; then
+            supabase link --project-ref "${{ vars.SUPABASE_PROJECT_REF }}" --password "$SUPABASE_DB_PASSWORD"
+          else
+            supabase link --project-ref "${{ vars.SUPABASE_PROJECT_REF }}"
+          fi
+
+      - name: Push config (Auth, API, Storage settings from config.toml)
+        run: supabase config push --yes
+
+      - name: Push database migrations
+        if: env.SUPABASE_DB_PASSWORD != ''
+        run: supabase db push --yes

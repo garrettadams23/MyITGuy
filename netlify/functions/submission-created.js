@@ -1,43 +1,79 @@
-import { neon } from "@neondatabase/serverless";
+import { withSupabase } from "@supabase/server";
 
 // Netlify automatically invokes this function for every submission to any
-// Netlify Form on the site (the "contact" form in index.html).
-export async function handler(event) {
+// Netlify Form on the site - currently the "contact" form (index.html) and
+// the "quiz-leads" form (quiz.html). Netlify calls this server-to-server
+// with no Authorization header, so it runs in "none" auth mode and writes
+// through ctx.supabaseAdmin (service role, bypasses RLS) since
+// contact_submissions has RLS enabled with no policies. Both forms share
+// the same contact_submissions table rather than getting their own.
+export default withSupabase({ auth: "none" }, async (req, ctx) => {
   try {
-    const body = JSON.parse(event.body || "{}");
-    const data = (body.payload || body).data || {};
+    const body = await req.json();
+    const submission = body.payload || body;
+    const data = submission.data || {};
+    const formName = submission.form_name || data["form-name"] || "contact";
 
-    const {
-      name = "",
-      subject = "",
-      email = "",
-      phone = "",
-      location = "",
-      rating = null,
-      message = "",
-    } = data;
+    let insertRow;
+    let emailSubject;
+    let emailText;
 
-    if (process.env.DATABASE_URL) {
-      const sql = neon(process.env.DATABASE_URL);
+    if (formName === "quiz-leads") {
+      const { name = "", email = "", result = "" } = data;
 
-      await sql`
-        CREATE TABLE IF NOT EXISTS contact_submissions (
-          id SERIAL PRIMARY KEY,
-          name TEXT,
-          subject TEXT,
-          email TEXT,
-          phone TEXT,
-          location TEXT,
-          rating INTEGER,
-          message TEXT,
-          created_at TIMESTAMPTZ DEFAULT now()
-        )
-      `;
+      insertRow = {
+        name,
+        subject: `IT Quiz Lead: ${result || "Unknown result"}`,
+        email,
+        phone: "",
+        location: "",
+        rating: null,
+        message: `Lead captured from the "Which IT Support Plan Fits You?" quiz on quiz.html. Recommended plan: ${result || "Unknown"}.`,
+      };
 
-      await sql`
-        INSERT INTO contact_submissions (name, subject, email, phone, location, rating, message)
-        VALUES (${name}, ${subject}, ${email}, ${phone}, ${location}, ${rating ? parseInt(rating, 10) : null}, ${message})
-      `;
+      emailSubject = `New quiz lead: ${result || "Unknown result"}`;
+      emailText = [
+        `Name: ${name || "(not provided)"}`,
+        `Email: ${email}`,
+        `Quiz result: ${result || "Unknown"}`,
+      ].join("\n");
+    } else {
+      const {
+        name = "",
+        subject = "",
+        email = "",
+        phone = "",
+        location = "",
+        rating = null,
+        message = "",
+      } = data;
+
+      insertRow = {
+        name,
+        subject,
+        email,
+        phone,
+        location,
+        rating: rating ? parseInt(rating, 10) : null,
+        message,
+      };
+
+      emailSubject = `New contact form message: ${subject || "No subject"}`;
+      emailText = [
+        `Name: ${name}`,
+        `Email: ${email}`,
+        `Phone: ${phone}`,
+        `Location: ${location}`,
+        `Rating: ${rating}`,
+        "",
+        message,
+      ].join("\n");
+    }
+
+    const { error } = await ctx.supabaseAdmin.from("contact_submissions").insert(insertRow);
+
+    if (error) {
+      console.error("contact_submissions insert error:", error);
     }
 
     if (process.env.RESEND_API_KEY) {
@@ -50,23 +86,15 @@ export async function handler(event) {
         body: JSON.stringify({
           from: process.env.NOTIFY_FROM_EMAIL || "MyITGuy Contact Form <onboarding@resend.dev>",
           to: process.env.NOTIFY_TO_EMAIL || "garrettadams1010@gmail.com",
-          subject: `New contact form message: ${subject || "No subject"}`,
-          text: [
-            `Name: ${name}`,
-            `Email: ${email}`,
-            `Phone: ${phone}`,
-            `Location: ${location}`,
-            `Rating: ${rating}`,
-            "",
-            message,
-          ].join("\n"),
+          subject: emailSubject,
+          text: emailText,
         }),
       });
     }
 
-    return { statusCode: 200, body: "ok" };
+    return new Response("ok", { status: 200 });
   } catch (error) {
     console.error("submission-created error:", error);
-    return { statusCode: 200, body: "ok" };
+    return new Response("ok", { status: 200 });
   }
-}
+});
