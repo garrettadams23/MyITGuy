@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Take this 60-second quiz to find out whether you need hands-on troubleshooting, security software solutions, or Excel & ServiceNow® support - then get a personalized recommendation from My IT Guy LLC."
+    />
+    <meta
+      name="keywords"
+      content="IT support quiz, My IT Guy LLC, IT Professional, Cybersecurity, Freelance IT, Help Desk, IT Administrator"
+    />
+    <title>Which IT Support Plan Fits You? | My IT Guy LLC</title>
+
+    <!-- Favicons -->
+    <link rel="manifest" href="site.webmanifest" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="Img/favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="Img/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="Img/favicon/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="Img/favicon/apple-touch-icon.png"
+    />
+    <meta name="apple-mobile-web-app-title" content="My IT Guy" />
+
+    <!-- Open Graph / Social Meta Tags -->
+    <meta
+      property="og:title"
+      content="Which IT Support Plan Fits You? - My IT Guy"
+    />
+    <meta property="og:url" content="https://myitguy.netlify.app/quiz.html" />
+    <meta property="og:image" content="Img/local/garrett-formal.webp" />
+    <meta
+      property="og:description"
+      content="A 60-second quiz that matches your IT pain points to the right support plan."
+    />
+    <meta property="og:site_name" content="My IT Guy Website" />
+    <meta property="og:type" content="website" />
+
+    <!-- Fonts & Icons Stylesheets -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Poppins|Great+Vibes|Josefin+Sans|Tangerine:700|Lobster|Ubuntu"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- GTM & Consent Initialization -->
+    <script>
+      const CONSENT_KEY = "myitguy_cookie_consent_v1";
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      // Consent Mode v2 defaults (DENIED)
+      gtag("consent", "default", {
+        ad_storage: "denied",
+        analytics_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        wait_for_update: 500,
+      });
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-MB82N5TC");
+    </script>
+  </head>
+
+  <body>
+    <!-- Cookie Consent Banner -->
+    <div
+      id="consent-banner"
+      class="consent hidden"
+      role="dialog"
+      aria-live="polite"
+      aria-label="Cookie consent"
+    >
+      <div class="consent__box">
+        <div class="consent__text">
+          <strong>Cookies & analytics</strong>
+          <p>
+            We use cookies for analytics and to improve the site. You can
+            accept or deny.
+          </p>
+        </div>
+        <div class="consent__actions">
+          <button id="consent-deny" class="btn btn--secondary" type="button">
+            Deny
+          </button>
+          <button id="consent-accept" class="btn btn--primary" type="button">
+            Accept
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Up Button -->
+    <button class="scroll-up-btn" aria-label="Scroll to top">
+      <img src="Img/favicon/favicon-96x96.png" alt="" />
+    </button>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="max-width">
+        <div class="logo">
+          <a href="index.html">MyI<span>T</span>Guy</a>
+        </div>
+        <ul class="menu">
+          <li><a href="index.html" class="menu-btn">Home</a></li>
+          <li><a href="index.html#about" class="menu-btn">About</a></li>
+          <li><a href="index.html#services" class="menu-btn">Services</a></li>
+          <li><a href="index.html#skills" class="menu-btn">Skills</a></li>
+          <li><a href="index.html#teams" class="menu-btn">Projects</a></li>
+          <li><a href="index.html#contact" class="menu-btn">Contact</a></li>
+          <li>
+            <a href="index.html#business-card" class="menu-btn">Business Card</a>
+          </li>
+          <li>
+            <button class="theme-btn" aria-label="Toggle Dark Mode">
+              <i class="fas fa-moon"></i>
+            </button>
+          </li>
+        </ul>
+        <div class="menu-btn" role="button" aria-label="Open menu">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Quiz Hero -->
+      <section class="quiz-hero">
+        <div class="max-width">
+          <a class="quiz-back-link" href="index.html">&larr; Back to MyITGuy</a>
+          <h1>Which IT Support Plan Fits You?</h1>
+          <p>
+            Answer six quick questions about what's actually slowing you
+            down, and get a personalized recommendation in under a minute.
+          </p>
+        </div>
+      </section>
+
+      <!-- Quiz Section -->
+      <section class="quiz-section">
+        <div class="max-width">
+          <div class="quiz-box">
+            <div class="quiz-progress">
+              <div class="quiz-progress-track">
+                <div class="quiz-progress-fill" id="quiz-progress-fill"></div>
+              </div>
+              <span class="quiz-progress-label" id="quiz-progress-label"
+                >Question 1 of 6</span
+              >
+            </div>
+
+            <!-- Question Step -->
+            <div class="quiz-step active" id="quiz-question-step">
+              <div class="quiz-question-text" id="quiz-question-text"></div>
+              <div class="quiz-options" id="quiz-options"></div>
+            </div>
+
+            <!-- Lead Capture Step -->
+            <div class="quiz-step" id="quiz-lead-step">
+              <h3 class="quiz-step-title">
+                Almost there - where should we send your results?
+              </h3>
+              <p class="quiz-step-desc">
+                Get your personalized recommendation now. I'll also have your
+                answer on file in case you reach out later.
+              </p>
+              <form
+                name="quiz-leads"
+                method="POST"
+                data-netlify="true"
+                id="quiz-lead-form"
+              >
+                <input type="hidden" name="form-name" value="quiz-leads" />
+                <input type="hidden" name="result" id="quiz-result-field" />
+                <div class="form-grid">
+                  <div class="form-field">
+                    <span class="form-label">Email</span>
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="you@email.com"
+                      required
+                    />
+                  </div>
+                  <div class="form-field">
+                    <span class="form-label">Name (optional)</span>
+                    <input type="text" name="name" placeholder="Your name" />
+                  </div>
+                </div>
+                <div class="form-field">
+                  <button type="submit">Show my results</button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Result Step -->
+            <div class="quiz-step" id="quiz-result-step">
+              <i class="quiz-result-icon fas" id="quiz-result-icon"></i>
+              <h3 class="quiz-result-title" id="quiz-result-title"></h3>
+              <p class="quiz-result-desc" id="quiz-result-desc"></p>
+              <p class="quiz-result-reco" id="quiz-result-reco"></p>
+              <div class="quiz-result-actions">
+                <a
+                  href="index.html#contact"
+                  class="quiz-btn quiz-btn--primary"
+                  >Get in touch</a
+                >
+                <a
+                  href="index.html#business-card"
+                  class="quiz-btn quiz-btn--secondary"
+                  >Book a free consult</a
+                >
+                <button
+                  type="button"
+                  id="quiz-retake"
+                  class="quiz-btn quiz-btn--secondary"
+                >
+                  Retake the quiz
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="max-width">
+        <p>
+          Created By
+          <a href="https://www.sololearn.com/en/profile/5936598"
+            >&copy; Garrett Adams</a
+          >
+          | <span class="far fa-copyright"></span> 2025 All rights reserved.
+          | <a href="index.html">Back to MyITGuy</a>
+        </p>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="consent.js" defer></script>
+    <script src="script.js" defer></script>
+    <script src="quiz.js" defer></script>
+  </body>
+</html>
