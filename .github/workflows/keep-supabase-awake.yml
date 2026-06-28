@@ -1,0 +1,27 @@
+name: Keep Supabase DB awake
+
+# Supabase auto-pauses free-tier projects after 7 days with no activity.
+# This calls db-test (a real query against the database via the
+# service-role client, not just a static health check) every 6 days so
+# the project is never seen as idle.
+#
+# Note: GitHub disables scheduled workflows after 60 days with no commits
+# to the repo - if pings stop firing, re-enable it from the Actions tab.
+on:
+  schedule:
+    - cron: "17 14 */6 * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    name: Ping database
+    runs-on: ubuntu-latest
+    steps:
+      - name: Query Supabase via the db-test function
+        run: |
+          http_code=$(curl -sS --max-time 30 -o response.json -w "%{http_code}" https://myitguy.netlify.app/api/db-test)
+          cat response.json
+          if [ "$http_code" -ne 200 ]; then
+            echo "::error::db-test ping failed with HTTP $http_code"
+            exit 1
+          fi
