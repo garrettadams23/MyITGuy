@@ -145,7 +145,9 @@ max_catalogs = 2
 
 # Store vector embeddings in S3 for large and durable datasets
 [storage.vector]
-enabled = true
+# Vector buckets require a paid Supabase tier; "supabase config push" 402s
+# on the free plan when this is true (and nothing on this site uses them).
+enabled = false
 max_buckets = 10
 max_indexes = 5
 
