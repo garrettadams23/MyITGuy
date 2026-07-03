@@ -46,6 +46,7 @@ export default withSupabase({ auth: "none" }, async (req, ctx) => {
         location = "",
         rating = null,
         message = "",
+        allow_publish = "",
       } = data;
 
       insertRow = {
@@ -56,6 +57,9 @@ export default withSupabase({ auth: "none" }, async (req, ctx) => {
         location,
         rating: rating ? parseInt(rating, 10) : null,
         message,
+        // Column exists only after the 20260702 testimonial migration runs;
+        // deploy that migration before shipping this handler to a site.
+        allow_publish: allow_publish === "yes",
       };
 
       emailSubject = `New contact form message: ${subject || "No subject"}`;
@@ -65,6 +69,7 @@ export default withSupabase({ auth: "none" }, async (req, ctx) => {
         `Phone: ${phone}`,
         `Location: ${location}`,
         `Rating: ${rating}`,
+        `OK to publish as testimonial: ${allow_publish === "yes" ? "yes" : "no"}`,
         "",
         message,
       ].join("\n");

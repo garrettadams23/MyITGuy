@@ -30,13 +30,23 @@
     />
     <meta name="apple-mobile-web-app-title" content="My IT Guy" />
 
+    <!-- Canonical -->
+    <link rel="canonical" href="https://myitguy.netlify.app/quiz.html" />
+
     <!-- Open Graph / Social Meta Tags -->
     <meta
       property="og:title"
       content="Which IT Support Plan Fits You? - My IT Guy"
     />
     <meta property="og:url" content="https://myitguy.netlify.app/quiz.html" />
-    <meta property="og:image" content="Img/local/garrett-formal.webp" />
+    <meta
+      property="og:image"
+      content="https://myitguy.netlify.app/Img/local/garrett-formal.webp"
+    />
+    <meta
+      property="og:image:alt"
+      content="Garrett Adams, founder of My IT Guy LLC"
+    />
     <meta
       property="og:description"
       content="A 60-second quiz that matches your IT pain points to the right support plan."
@@ -44,10 +54,27 @@
     <meta property="og:site_name" content="My IT Guy Website" />
     <meta property="og:type" content="website" />
 
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Which IT Support Plan Fits You? - My IT Guy"
+    />
+    <meta
+      name="twitter:description"
+      content="A 60-second quiz that matches your IT pain points to the right support plan."
+    />
+    <meta
+      name="twitter:image"
+      content="https://myitguy.netlify.app/Img/local/garrett-formal.webp"
+    />
+
     <!-- Fonts & Icons Stylesheets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Poppins|Great+Vibes|Josefin+Sans|Tangerine:700|Lobster|Ubuntu"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap"
     />
     <link
       rel="stylesheet"
@@ -58,8 +85,8 @@
     <link rel="stylesheet" href="style.css" />
 
     <!-- GTM & Consent Initialization -->
+    <!-- (CONSENT_KEY lives in consent.js; redeclaring the const here throws) -->
     <script>
-      const CONSENT_KEY = "myitguy_cookie_consent_v1";
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
@@ -91,6 +118,17 @@
   </head>
 
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-MB82N5TC"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+        title="Google Tag Manager"
+      ></iframe
+    ></noscript>
+
     <!-- Cookie Consent Banner -->
     <div
       id="consent-banner"
@@ -145,7 +183,7 @@
             </button>
           </li>
         </ul>
-        <div class="menu-btn" role="button" aria-label="Open menu">
+        <div class="menu-btn" role="button" tabindex="0" aria-label="Open menu">
           <i class="fas fa-bars"></i>
         </div>
       </div>
@@ -196,23 +234,31 @@
                 name="quiz-leads"
                 method="POST"
                 data-netlify="true"
+                netlify-honeypot="bot-field"
                 id="quiz-lead-form"
               >
                 <input type="hidden" name="form-name" value="quiz-leads" />
                 <input type="hidden" name="result" id="quiz-result-field" />
+                <p class="bot-field" hidden>
+                  <label>
+                    Don't fill this out if you're human:
+                    <input name="bot-field" />
+                  </label>
+                </p>
                 <div class="form-grid">
                   <div class="form-field">
-                    <span class="form-label">Email</span>
+                    <label class="form-label" for="quiz-email">Email</label>
                     <input
                       type="email"
+                      id="quiz-email"
                       name="email"
                       placeholder="you@email.com"
                       required
                     />
                   </div>
                   <div class="form-field">
-                    <span class="form-label">Name (optional)</span>
-                    <input type="text" name="name" placeholder="Your name" />
+                    <label class="form-label" for="quiz-name">Name (optional)</label>
+                    <input type="text" id="quiz-name" name="name" placeholder="Your name" />
                   </div>
                 </div>
                 <div class="form-field">

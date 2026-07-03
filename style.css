@@ -11,7 +11,8 @@
 /* ============================================
     IMPORTS & RESET
     ============================================ */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+/* Fonts load via <link> in each page's <head> (a render-blocking
+   @import here would delay first paint). */
 
 * {
      margin: 0;
@@ -1755,5 +1756,86 @@ footer span a:hover {
     .card-back-ui .service-label {
         font-size: 11px;
     }
+}
+
+/* ============================================
+    TESTIMONIALS SECTION
+    ============================================ */
+.testimonials {
+     font-family: 'Poppins', sans-serif;
+}
+
+.testimonials .title::after {
+     content: "what clients say";
+}
+
+.testimonials .testimonials-intro {
+     text-align: center;
+     color: #888;
+     margin: -40px 0 40px;
+}
+
+.testimonials .testimonials-grid {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: center;
+     gap: 20px;
+}
+
+.testimonials .t-card {
+     width: calc(33% - 20px);
+     min-width: 260px;
+     background: var(--light-background);
+     border: 1px solid var(--light-grey);
+     border-radius: 6px;
+     padding: 22px 25px;
+     color: var(--text-main);
+}
+
+.testimonials .t-stars {
+     color: var(--primary-color);
+     font-size: 14px;
+     letter-spacing: 2px;
+     margin-bottom: 10px;
+}
+
+.testimonials .t-message {
+     font-size: 15px;
+     line-height: 1.6;
+}
+
+.testimonials .t-name {
+     margin-top: 12px;
+     font-weight: 600;
+     font-size: 14px;
+}
+
+@media (max-width: 690px) {
+     .testimonials .t-card {
+          width: 100%;
+     }
+}
+
+/* Hero: space between the two CTA buttons */
+.home .home-content a + a {
+     margin-left: 14px;
+}
+
+/* Contact form: publish-consent checkbox */
+.form-consent .consent-label {
+     display: flex;
+     align-items: flex-start;
+     gap: 8px;
+     font-size: 12px;
+     color: #888;
+     text-transform: none;
+     letter-spacing: normal;
+     cursor: pointer;
+}
+
+.form-consent input[type="checkbox"] {
+     width: auto;
+     height: auto;
+     margin-top: 2px;
 }
 
