@@ -30,21 +30,45 @@
     />
     <meta name="apple-mobile-web-app-title" content="My IT Guy" />
 
+    <!-- Canonical -->
+    <link rel="canonical" href="https://myitguy.netlify.app/" />
+
     <!-- Open Graph / Social Meta Tags -->
-    <meta property="og:title" content="My IT Guy LLC" />
+    <meta property="og:title" content="My IT Guy LLC - IT Professional" />
     <meta property="og:url" content="https://myitguy.netlify.app/" />
-    <meta property="og:image" content="Img/local/garrett-formal.webp" />
+    <meta
+      property="og:image"
+      content="https://myitguy.netlify.app/Img/local/garrett-formal.webp"
+    />
+    <meta
+      property="og:image:alt"
+      content="Garrett Adams, founder of My IT Guy LLC"
+    />
     <meta
       property="og:description"
-      content="Showcase my skills to increase freelancing opportunities."
+      content="Freelance IT support in the Washington, DC area - troubleshooting, cybersecurity, and Excel & ServiceNow solutions from a certified IT professional."
     />
     <meta property="og:site_name" content="My IT Guy Website" />
     <meta property="og:type" content="website" />
 
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="My IT Guy LLC - IT Professional" />
+    <meta
+      name="twitter:description"
+      content="Freelance IT support in the Washington, DC area - troubleshooting, cybersecurity, and Excel & ServiceNow solutions."
+    />
+    <meta
+      name="twitter:image"
+      content="https://myitguy.netlify.app/Img/local/garrett-formal.webp"
+    />
+
     <!-- Fonts & Icons Stylesheets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Poppins|Great+Vibes|Josefin+Sans|Tangerine:700|Lobster|Ubuntu"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap"
     />
     <link
       rel="stylesheet"
@@ -61,8 +85,8 @@
     <link rel="stylesheet" href="style.css" />
 
     <!-- GTM & Consent Initialization -->
+    <!-- (CONSENT_KEY lives in consent.js; redeclaring the const here throws) -->
     <script>
-      const CONSENT_KEY = "myitguy_cookie_consent_v1";
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
@@ -91,9 +115,58 @@
         f.parentNode.insertBefore(j, f);
       })(window, document, "script", "dataLayer", "GTM-MB82N5TC");
     </script>
+
+    <!-- Structured Data: local business -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "@id": "https://myitguy.netlify.app/#business",
+        "name": "My IT Guy LLC",
+        "url": "https://myitguy.netlify.app/",
+        "image": "https://myitguy.netlify.app/Img/local/garrett-formal.webp",
+        "description": "Freelance IT support for the Washington, DC area: system troubleshooting, cybersecurity and software solutions, and Excel & ServiceNow reporting.",
+        "email": "garrettadams1010@gmail.com",
+        "telephone": "+1-240-380-6042",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Washington",
+          "addressRegion": "DC",
+          "postalCode": "20032",
+          "addressCountry": "US"
+        },
+        "areaServed": "Washington, DC metropolitan area",
+        "founder": {
+          "@type": "Person",
+          "name": "Garrett Adams",
+          "jobTitle": "IT Professional",
+          "sameAs": [
+            "https://www.linkedin.com/in/garrettadams1010gmailcom",
+            "https://www.fiverr.com/garrettadams10",
+            "https://stackoverflow.com/users/32138546/garrett-adams",
+            "https://orcid.org/0009-0002-4527-8850"
+          ]
+        },
+        "sameAs": [
+          "https://www.linkedin.com/in/garrettadams1010gmailcom",
+          "https://www.fiverr.com/garrettadams10"
+        ]
+      }
+    </script>
   </head>
 
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-MB82N5TC"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+        title="Google Tag Manager"
+      ></iframe
+    ></noscript>
+
     <!-- Cookie Consent Banner -->
     <div
       id="consent-banner"
@@ -195,7 +268,7 @@
             </button>
           </li>
         </ul>
-        <div class="menu-btn" role="button" aria-label="Open menu">
+        <div class="menu-btn" role="button" tabindex="0" aria-label="Open menu">
           <i class="fas fa-bars"></i>
         </div>
       </div>
@@ -213,6 +286,7 @@
               href="https://www.linkedin.com/in/garrettadams1010gmailcom?trk=contact-info"
               >Hire me</a
             >
+            <a href="#business-card">Book a free consult</a>
           </div>
         </div>
       </section>
@@ -611,6 +685,17 @@
         </div>
       </section>
 
+      <!-- Testimonials Section (revealed by script.js once approved reviews exist) -->
+      <section class="testimonials" id="testimonials" hidden>
+        <div class="max-width">
+          <h2 class="title">Reviews</h2>
+          <p class="testimonials-intro">
+            Feedback from people I've helped, shared with their permission.
+          </p>
+          <div class="testimonials-grid" id="testimonials-grid"></div>
+        </div>
+      </section>
+
       <!-- Contact Section -->
       <section class="contact" id="contact">
         <div class="max-width">
@@ -626,7 +711,7 @@
                 <i class="fas fa-user"></i>
                 <div class="info">
                   <div class="head">Name:</div>
-                  <div class="sub-title"><a>Garrett Adams</a></div>
+                  <div class="sub-title">Garrett Adams</div>
                 </div>
               </div>
               <div class="row">
@@ -665,32 +750,44 @@
             </div>
             <div class="column right">
               <div class="text">Message me</div>
-              <form name="contact" method="POST" data-netlify="true">
+              <form
+                name="contact"
+                method="POST"
+                action="/thanks.html"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+              >
                 <input type="hidden" name="form-name" value="contact" />
+                <p class="bot-field" hidden>
+                  <label>
+                    Don't fill this out if you're human:
+                    <input name="bot-field" />
+                  </label>
+                </p>
                 <div class="form-grid">
                   <div class="form-field">
-                    <span class="form-label">Name</span>
-                    <input type="text" name="name" placeholder="Your name" required />
+                    <label class="form-label" for="contact-name">Name</label>
+                    <input type="text" id="contact-name" name="name" placeholder="Your name" required />
                   </div>
                   <div class="form-field">
-                    <span class="form-label">Subject</span>
-                    <input type="text" name="subject" placeholder="How can I help?" required />
+                    <label class="form-label" for="contact-subject">Subject</label>
+                    <input type="text" id="contact-subject" name="subject" placeholder="How can I help?" required />
                   </div>
                   <div class="form-field">
-                    <span class="form-label">Email</span>
-                    <input type="email" name="email" placeholder="your@email.com" required />
+                    <label class="form-label" for="contact-email">Email</label>
+                    <input type="email" id="contact-email" name="email" placeholder="your@email.com" required />
                   </div>
                   <div class="form-field">
-                    <span class="form-label">Phone</span>
-                    <input type="tel" name="phone" placeholder="1-240-000-0000" />
+                    <label class="form-label" for="contact-phone">Phone</label>
+                    <input type="tel" id="contact-phone" name="phone" placeholder="1-240-000-0000" />
                   </div>
                   <div class="form-field">
-                    <span class="form-label">Location</span>
-                    <input type="text" name="location" placeholder="City, State" />
+                    <label class="form-label" for="contact-location">Location</label>
+                    <input type="text" id="contact-location" name="location" placeholder="City, State" />
                   </div>
                   <div class="form-field">
-                    <span class="form-label">Rating</span>
-                    <select name="rating" required>
+                    <label class="form-label" for="contact-rating">Rating</label>
+                    <select id="contact-rating" name="rating" required>
                       <option value="" disabled selected>Select a rating</option>
                       <option value="5">5 — Best</option>
                       <option value="4">4</option>
@@ -700,8 +797,15 @@
                     </select>
                   </div>
                   <div class="form-field form-span2">
-                    <span class="form-label">Message</span>
-                    <textarea name="message" rows="5" placeholder="Type your message..." required></textarea>
+                    <label class="form-label" for="contact-message">Message</label>
+                    <textarea id="contact-message" name="message" rows="5" placeholder="Type your message..." required></textarea>
+                  </div>
+                  <div class="form-field form-span2 form-consent">
+                    <label class="consent-label">
+                      <input type="checkbox" name="allow_publish" value="yes" />
+                      You may publish my feedback (name, rating, and message)
+                      as a testimonial on this site.
+                    </label>
                   </div>
                   <div class="form-field">
                     <button type="submit">Send message</button>
@@ -969,7 +1073,7 @@
         </div>
 
         <!-- Google Calendar Appointment Scheduling begin -->
-        <iframe src="https://calendar.google.com/calendar/appointments/AcZssZ0V3R1u-42PFHpCIRFeEogMaE3-BED14Zg4C4E=?gv=true" style="border: 0" width="100%" height="600" frameborder="0"></iframe>
+        <iframe title="Book an appointment with My IT Guy" src="https://calendar.google.com/calendar/appointments/AcZssZ0V3R1u-42PFHpCIRFeEogMaE3-BED14Zg4C4E=?gv=true" style="border: 0" width="100%" height="600" frameborder="0"></iframe>
         <!-- end Google Calendar Appointment Scheduling -->
       </section>
     </main>
@@ -982,7 +1086,8 @@
           <a href="https://www.sololearn.com/en/profile/5936598"
             >&copy; Garrett Adams</a
           >
-          | <span class="far fa-copyright"></span> 2025 All rights reserved.
+          | <span class="far fa-copyright"></span>
+          <span id="copyright-year">2026</span> All rights reserved.
         </p>
 
         <div class="footer-links">

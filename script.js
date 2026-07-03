@@ -48,7 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Typing text animation script
-    if (document.querySelector(".typing")) {
+    // typeof guards: a blocked CDN must not abort this whole handler
+    if (typeof Typed !== "undefined" && document.querySelector(".typing")) {
         new Typed(".typing", {
             strings: ["Tier 2 Imaging Technician Lead", "IT Expert", "Tier 2 Help Desk", "IT Administrator", "Freelancer", "Information System Engineer", "Inventory Management Specialist", "AI Prompt Engineer", "Junior Full Stack Developer", "Software Engineer"],
             typeSpeed: 100,
@@ -57,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    if (document.querySelector(".typing-2")) {
+    if (typeof Typed !== "undefined" && document.querySelector(".typing-2")) {
         new Typed(".typing-2", {
             strings: ["Tier 2 Imaging Technician", "IT Expert", "Tier 2 Help Desk", "IT Administrator", "Freelancer"],
             typeSpeed: 100,
@@ -67,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Swiper Carousel script
-    if (document.querySelector(".mySwiper")) {
+    if (typeof Swiper !== "undefined" && document.querySelector(".mySwiper")) {
         new Swiper(".mySwiper", {
             slidesPerView: 1,
             spaceBetween: 20,
@@ -105,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // QR Code Generation
     const qrContainer = document.getElementById("qrcode");
-    if (qrContainer) {
+    if (qrContainer && typeof QRCode !== "undefined") {
         new QRCode(qrContainer, {
             text: window.location.href,
             width: 130,
@@ -135,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
         themeBtn.addEventListener('click', () => {
             body.classList.toggle('dark-theme');
             const isDark = body.classList.contains('dark-theme');
-            
+
             // Toggle icon
             if (isDark) {
                 themeIcon.classList.remove('fa-moon');
@@ -147,5 +148,64 @@ document.addEventListener("DOMContentLoaded", () => {
                 localStorage.setItem('theme', 'light');
             }
         });
+    }
+
+    // Keyboard access for the hamburger menu (div with role="button")
+    if (menuBtn) {
+        menuBtn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                menuBtn.click();
+            }
+        });
+    }
+
+    // Keep the footer copyright year current
+    const yearEl = document.getElementById('copyright-year');
+    if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+    }
+
+    // Testimonials - reveal the section only when approved reviews exist
+    const testimonialsSection = document.getElementById('testimonials');
+    if (testimonialsSection) {
+        fetch('/api/testimonials')
+            .then((res) => (res.ok ? res.json() : Promise.reject(new Error(String(res.status)))))
+            .then((payload) => {
+                const testimonials = payload && payload.testimonials;
+                if (!Array.isArray(testimonials) || testimonials.length === 0) return;
+                const grid = document.getElementById('testimonials-grid');
+
+                testimonials.forEach((t) => {
+                    const card = document.createElement('div');
+                    card.className = 't-card';
+
+                    const stars = document.createElement('div');
+                    stars.className = 't-stars';
+                    stars.setAttribute('aria-label', `${t.rating} out of 5 stars`);
+                    for (let i = 1; i <= 5; i++) {
+                        const star = document.createElement('i');
+                        star.className = i <= t.rating ? 'fas fa-star' : 'far fa-star';
+                        star.setAttribute('aria-hidden', 'true');
+                        stars.appendChild(star);
+                    }
+
+                    const message = document.createElement('p');
+                    message.className = 't-message';
+                    message.textContent = t.message;
+
+                    const name = document.createElement('div');
+                    name.className = 't-name';
+                    name.textContent = `— ${t.name}`;
+
+                    card.append(stars, message, name);
+                    grid.appendChild(card);
+                });
+
+                testimonialsSection.hidden = false;
+            })
+            .catch(() => {
+                /* API unavailable or no data - leave the section hidden */
+            });
     }
 });
