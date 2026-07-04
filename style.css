@@ -534,43 +534,10 @@ section .title::after {
      background: none;
 }
 
-.skills .skills-content .right .bars {
-     margin-bottom: 15px;
-}
-
-.skills .skills-content .right .info {
-     display: flex;
-     margin-bottom: 5px;
-     align-items: center;
-     justify-content: space-between;
-}
-
 .skills .skills-content .right span {
      font-weight: 500;
      font-size: 18px;
 }
-
-.skills .skills-content .right .line {
-     height: 5px;
-     width: 100%;
-     background: lightgrey;
-     position: relative;
-}
-
-.skills .skills-content .right .line::before {
-     content: "";
-     position: absolute;
-     height: 100%;
-     left: 0;
-     top: 0;
-     background: var(--primary-color);
-}
-
-.skills-content .right .Windows::before { width: 90%; }
-.skills-content .right .Linux::before { width: 60%; }
-.skills-content .right .Mobile::before { width: 80%; }
-.skills-content .right .Software::before { width: 70%; }
-.skills-content .right .Hardware::before { width: 95%; }
 
 /* GitHub code breakdown */
 .gh-section {

@@ -21,7 +21,7 @@ The following serverless functions are available in the `/netlify/functions` dir
 
 - `health.js`: A simple health-check endpoint.
 - `db-test.js`: Verifies the Supabase database connection by counting rows in `contact_submissions`.
-- `submission-created.js`: Stores contact form submissions in Supabase Postgres and sends an email notification.
+- `submission-created.js`: Stores contact form submissions in Supabase Postgres, sends an email notification, and (if `NTFY_TOPIC` is set) a phone push via ntfy.sh.
 - `testimonials.js`: Public endpoint returning opt-in, owner-approved contact-form feedback for the Reviews section on the homepage.
 - `supabase-example.js`: A template for authenticated endpoints using `@supabase/server` (see `.env.example` for required config).
 
