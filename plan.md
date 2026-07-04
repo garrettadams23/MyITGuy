@@ -113,6 +113,10 @@ Corrections to apply across `index.html`:
 - [x] **Remove non-code percentage bars**: Deleted the five "OS & Software" skill bars (Windows 90% / Linux 60% / Android 80% / Software 70% / Hardware 95%) from the Skills section in `index.html` plus their now-dead CSS (`.bars`, `.info`, `.line` + the five width rules). The GitHub code-language breakdown widget and the skill chips stay.
 - [x] **Phone push for form submissions (ntfy.sh)**: `submission-created.js` now also publishes a push notification via ntfy.sh when `NTFY_TOPIC` is set (title = same subject as the email, message = first 300 chars of the detail, distinct tags for contact vs quiz leads). Topic name doubles as the auth secret. `NTFY_TOPIC` added to `.env.example` and to the `sync-secrets-to-netlify.yml` var list; no-op until the GitHub secret is created and synced.
 
+## Phase 17: Booking Widget Dark-Mode Readability
+
+- [x] **Google Calendar embed unreadable in dark mode**: The appointment `<iframe>` is cross-origin (can't be themed by our CSS) and Google renders its text on a transparent background, so in dark mode that text fell on the `#222` section (`--light-background` in dark theme) and vanished. Wrapped the iframe in a `.booking` card whose background is hard-coded `#fff` (deliberately not `var(--light-background)`) plus a `.booking-heading`, so the embed keeps a readable white surface in both themes. Verified in headless Chromium that `.booking` computes to `rgb(255,255,255)` in both light and dark modes while the section behind it flips to `#222`.
+
 ## Future Ideas
 
 - [ ] **garrettstudies.netlify.app symbol**: User asked for "a symbol" above the content on `garrettstudies.netlify.app` (photo 7 of mobile QA). This site does not appear to be part of the `garrettadams23/myitguy` repo (no `studies.html` found in this repo's history) — needs to be addressed in its own repo.

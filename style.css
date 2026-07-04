@@ -1397,6 +1397,39 @@ footer span a:hover {
     content: "My Digital Card";
 }
 
+/* Booking widget (Google Calendar embed).
+   The iframe is cross-origin, so our dark-mode toggle can't restyle its
+   contents, and Google renders its text on a transparent background.
+   These backgrounds are hard-coded #fff (NOT var(--light-background)) on
+   purpose, so the embed keeps a readable white surface in dark mode. */
+.booking {
+    max-width: 800px;
+    margin: 45px auto 0;
+    background: #fff;
+    border: 1px solid #e2e2e2;
+    border-radius: 10px;
+    padding: 14px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.booking-heading {
+    text-align: center;
+    color: #111;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.booking-frame {
+    display: block;
+    width: 100%;
+    height: 600px;
+    border: 0;
+    border-radius: 6px;
+    background: #fff;
+}
+
 .card-container {
     width: min(700px, 100%);
     height: 389px;

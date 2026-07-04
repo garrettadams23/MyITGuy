@@ -1037,7 +1037,21 @@
         </div>
 
         <!-- Google Calendar Appointment Scheduling begin -->
-        <iframe title="Book an appointment with My IT Guy" src="https://calendar.google.com/calendar/appointments/AcZssZ0V3R1u-42PFHpCIRFeEogMaE3-BED14Zg4C4E=?gv=true" style="border: 0" width="100%" height="600" frameborder="0"></iframe>
+        <!-- Wrapped in a fixed white card: the embed is a cross-origin
+             iframe we can't theme, and its text sits on a transparent
+             background, so it needs a permanent light surface to stay
+             readable when the site is in dark mode. -->
+        <div class="booking">
+          <p class="booking-heading">Pick a time that works for you</p>
+          <iframe
+            class="booking-frame"
+            title="Book an appointment with My IT Guy"
+            src="https://calendar.google.com/calendar/appointments/AcZssZ0V3R1u-42PFHpCIRFeEogMaE3-BED14Zg4C4E=?gv=true"
+            width="100%"
+            height="600"
+            frameborder="0"
+          ></iframe>
+        </div>
         <!-- end Google Calendar Appointment Scheduling -->
       </section>
     </main>
