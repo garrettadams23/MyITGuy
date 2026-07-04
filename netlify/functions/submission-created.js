@@ -97,6 +97,22 @@ export default withSupabase({ auth: "none" }, async (req, ctx) => {
       });
     }
 
+    // Optional phone push via ntfy.sh: subscribe to the topic in the ntfy
+    // app and set NTFY_TOPIC. Anyone who knows the topic name can read
+    // these pushes, so treat it like a password (long + random).
+    if (process.env.NTFY_TOPIC) {
+      await fetch("https://ntfy.sh", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          topic: process.env.NTFY_TOPIC,
+          title: emailSubject,
+          message: emailText.length > 300 ? `${emailText.slice(0, 300)}…` : emailText,
+          tags: [formName === "quiz-leads" ? "dart" : "envelope_with_arrow"],
+        }),
+      });
+    }
+
     return new Response("ok", { status: 200 });
   } catch (error) {
     console.error("submission-created error:", error);
