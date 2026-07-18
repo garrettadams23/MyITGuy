@@ -153,6 +153,64 @@
         ]
       }
     </script>
+
+    <!-- Structured Data: FAQ (must mirror the visible FAQ section text) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What areas do you serve?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "I'm based in Congress Heights, Washington, DC and help individuals and small businesses across the DC metro area. Many issues can also be handled remotely, so distance usually isn't a barrier."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What kinds of problems can you help with?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Three main areas: hands-on troubleshooting for Windows, Linux, and Android devices; software and security solutions like Microsoft 365 setup, zero-trust access, and SIEM monitoring; and Excel and ServiceNow work such as custom spreadsheets, dashboards, and reporting. Not sure which one you need? The 60-second quiz will point you in the right direction."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you offer remote support or only in person?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Both. Many software, security, and spreadsheet tasks can be done remotely, while hardware problems sometimes need an in-person visit around the DC area. We'll pick the fastest option when you reach out."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does IT help cost?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It depends on the scope of the work, so the best next step is a free consultation. Reach out through the contact form or book a time on my calendar, and I'll give you a clear estimate before any work starts."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "My computer is really slow - can that be fixed?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Usually, yes. A slow computer is one of the most common issues I handle, and it's often fixable without buying new hardware - think startup cleanup, malware checks, storage and memory limits, and overdue driver or software updates."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you work with businesses that handle sensitive or regulated data?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. With a DoD background, I'm comfortable with the access controls, monitoring, and security basics that matter for organizations handling sensitive data, and I can help you understand and prepare for frameworks like CMMC or DFARS that are common for DC-area contractors."
+            }
+          }
+        ]
+      }
+    </script>
   </head>
 
   <body>
@@ -245,6 +303,16 @@
       <img src="Img/favicon/favicon-96x96.png" alt="" />
     </button>
 
+    <!-- Text-me quick contact (shown on mobile) -->
+    <a
+      class="text-me-btn"
+      href="sms:+12403806042?&body=Hi%20Garrett%2C%20I%20need%20some%20IT%20help%20with..."
+      aria-label="Text My IT Guy"
+    >
+      <i class="fas fa-comment-dots" aria-hidden="true"></i>
+      <span>Text me</span>
+    </a>
+
     <!-- Navigation Bar -->
     <nav class="navbar">
       <div class="max-width">
@@ -286,7 +354,7 @@
               href="https://www.linkedin.com/in/garrettadams1010gmailcom?trk=contact-info"
               >Hire me</a
             >
-            <a href="#business-card">Book a free consult</a>
+            <a href="#business-card" class="book-cta">Book a free consult</a>
           </div>
         </div>
       </section>
@@ -645,6 +713,39 @@
               </div>
             </div>
             <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="faq" id="faq">
+        <div class="max-width">
+          <h2 class="title">FAQ</h2>
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary>What areas do you serve?</summary>
+              <p>I'm based in Congress Heights, Washington, DC and help individuals and small businesses across the DC metro area. Many issues can also be handled remotely, so distance usually isn't a barrier.</p>
+            </details>
+            <details class="faq-item">
+              <summary>What kinds of problems can you help with?</summary>
+              <p>Three main areas: hands-on troubleshooting for Windows, Linux, and Android devices; software and security solutions like Microsoft 365 setup, zero-trust access, and SIEM monitoring; and Excel and ServiceNow work such as custom spreadsheets, dashboards, and reporting. Not sure which one you need? The 60-second quiz will point you in the right direction.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Do you offer remote support or only in person?</summary>
+              <p>Both. Many software, security, and spreadsheet tasks can be done remotely, while hardware problems sometimes need an in-person visit around the DC area. We'll pick the fastest option when you reach out.</p>
+            </details>
+            <details class="faq-item">
+              <summary>How much does IT help cost?</summary>
+              <p>It depends on the scope of the work, so the best next step is a free consultation. Reach out through the contact form or book a time on my calendar, and I'll give you a clear estimate before any work starts.</p>
+            </details>
+            <details class="faq-item">
+              <summary>My computer is really slow - can that be fixed?</summary>
+              <p>Usually, yes. A slow computer is one of the most common issues I handle, and it's often fixable without buying new hardware - think startup cleanup, malware checks, storage and memory limits, and overdue driver or software updates.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Do you work with businesses that handle sensitive or regulated data?</summary>
+              <p>Yes. With a DoD background, I'm comfortable with the access controls, monitoring, and security basics that matter for organizations handling sensitive data, and I can help you understand and prepare for frameworks like CMMC or DFARS that are common for DC-area contractors.</p>
+            </details>
           </div>
         </div>
       </section>
