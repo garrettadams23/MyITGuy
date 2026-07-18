@@ -79,6 +79,22 @@ export default withSupabase({ auth: "none" }, async (req, ctx) => {
 
     if (error) {
       console.error("contact_submissions insert error:", error);
+      // Ops alert: a lead came in but the DB write failed, so it won't be
+      // in Supabase. Push a high-priority ntfy so it can be recovered from
+      // the email/phone notification that still goes out below.
+      if (process.env.NTFY_TOPIC) {
+        await fetch("https://ntfy.sh", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            topic: process.env.NTFY_TOPIC,
+            title: "⚠️ MyITGuy: DB insert failed (form saved to email only)",
+            message: `A ${formName} submission could not be written to Supabase: ${error.message}`,
+            tags: ["warning"],
+            priority: 4,
+          }),
+        }).catch((e) => console.error("ntfy alert failed:", e));
+      }
     }
 
     if (process.env.RESEND_API_KEY) {

@@ -149,6 +149,14 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
       resultField.value = QUIZ_RESULTS[getWinningCategory()].title;
 
+      // GA4 conversion signal: quiz completed (create a GTM Custom Event
+      // trigger on "quiz_completed").
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "quiz_completed",
+        quiz_result: resultField.value,
+      });
+
       const formData = new FormData(leadForm);
       fetch(window.location.pathname, {
         method: "POST",

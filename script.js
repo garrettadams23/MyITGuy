@@ -166,6 +166,16 @@ document.addEventListener("DOMContentLoaded", () => {
         yearEl.textContent = new Date().getFullYear();
     }
 
+    // GA4 signal: hero "Book a free consult" CTA click (create a GTM
+    // Custom Event trigger on "booking_cta_click").
+    const bookCta = document.querySelector('.book-cta');
+    if (bookCta) {
+        bookCta.addEventListener('click', () => {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({ event: 'booking_cta_click' });
+        });
+    }
+
     // Testimonials - reveal the section only when approved reviews exist
     const testimonialsSection = document.getElementById('testimonials');
     if (testimonialsSection) {
