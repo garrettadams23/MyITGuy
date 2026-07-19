@@ -30,6 +30,14 @@
     />
     <meta name="apple-mobile-web-app-title" content="My IT Guy" />
 
+    <!-- Preload the hero background so it paints sooner (LCP) -->
+    <link
+      rel="preload"
+      as="image"
+      href="Img/local/bg-home.webp"
+      fetchpriority="high"
+    />
+
     <!-- Canonical -->
     <link rel="canonical" href="https://myitguy.netlify.app/" />
 
@@ -153,6 +161,64 @@
         ]
       }
     </script>
+
+    <!-- Structured Data: FAQ (must mirror the visible FAQ section text) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What areas do you serve?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "I'm based in Congress Heights, Washington, DC and help individuals and small businesses across the DC metro area. Many issues can also be handled remotely, so distance usually isn't a barrier."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What kinds of problems can you help with?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Three main areas: hands-on troubleshooting for Windows, Linux, and Android devices; software and security solutions like Microsoft 365 setup, zero-trust access, and SIEM monitoring; and Excel and ServiceNow work such as custom spreadsheets, dashboards, and reporting. Not sure which one you need? The 60-second quiz will point you in the right direction."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you offer remote support or only in person?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Both. Many software, security, and spreadsheet tasks can be done remotely, while hardware problems sometimes need an in-person visit around the DC area. We'll pick the fastest option when you reach out."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does IT help cost?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It depends on the scope of the work, so the best next step is a free consultation. Reach out through the contact form or book a time on my calendar, and I'll give you a clear estimate before any work starts."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "My computer is really slow - can that be fixed?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Usually, yes. A slow computer is one of the most common issues I handle, and it's often fixable without buying new hardware - think startup cleanup, malware checks, storage and memory limits, and overdue driver or software updates."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you work with businesses that handle sensitive or regulated data?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. With a DoD background, I'm comfortable with the access controls, monitoring, and security basics that matter for organizations handling sensitive data, and I can help you understand and prepare for frameworks like CMMC or DFARS that are common for DC-area contractors."
+            }
+          }
+        ]
+      }
+    </script>
   </head>
 
   <body>
@@ -245,6 +311,16 @@
       <img src="Img/favicon/favicon-96x96.png" alt="" />
     </button>
 
+    <!-- Text-me quick contact (shown on mobile) -->
+    <a
+      class="text-me-btn"
+      href="sms:+12403806042?&body=Hi%20Garrett%2C%20I%20need%20some%20IT%20help%20with..."
+      aria-label="Text My IT Guy"
+    >
+      <i class="fas fa-comment-dots" aria-hidden="true"></i>
+      <span>Text me</span>
+    </a>
+
     <!-- Navigation Bar -->
     <nav class="navbar">
       <div class="max-width">
@@ -260,6 +336,7 @@
           <li><a href="#services" class="menu-btn">Services</a></li>
           <li><a href="#skills" class="menu-btn">Skills</a></li>
           <li><a href="#teams" class="menu-btn">Projects</a></li>
+          <li><a href="articles.html" class="menu-btn">Tips</a></li>
           <li><a href="#contact" class="menu-btn">Contact</a></li>
           <li><a href="#business-card" class="menu-btn">Business Card</a></li>
           <li>
@@ -286,7 +363,7 @@
               href="https://www.linkedin.com/in/garrettadams1010gmailcom?trk=contact-info"
               >Hire me</a
             >
-            <a href="#business-card">Book a free consult</a>
+            <a href="#business-card" class="book-cta">Book a free consult</a>
           </div>
         </div>
       </section>
@@ -391,7 +468,7 @@
         <div class="max-width">
           <h2 class="title">My services</h2>
           <div class="serv-content">
-            <div class="card">
+            <div class="card" id="svc-troubleshooting">
               <div class="box">
                 <i class="fas fa-paint-brush"></i>
                 <div class="text">Troubleshooting Systems</div>
@@ -399,9 +476,17 @@
                   Troubleshooting software and hardware. Specialize in Android,
                   Windows® and Linux systems.
                 </p>
+                <ul class="serv-features">
+                  <li>Diagnosis &amp; repair for Windows®, Linux &amp; Android</li>
+                  <li>Slow, crashing, or won't-boot fixes</li>
+                  <li>Virus &amp; malware removal</li>
+                  <li>Hardware upgrades (SSD, RAM) &amp; setup</li>
+                </ul>
+                <a href="#contact" class="serv-quote-btn">Get a free quote</a>
+                <a href="troubleshooting.html" class="serv-learn">Learn more &rarr;</a>
               </div>
             </div>
-            <div class="card">
+            <div class="card" id="svc-software">
               <div class="box">
                 <i class="fas fa-shield-alt"></i>
                 <div class="text">Software Solutions</div>
@@ -409,9 +494,17 @@
                   Microsoft® Suite, zero-trust infrastructure, and SIEM
                   solutions for monitoring and access control.
                 </p>
+                <ul class="serv-features">
+                  <li>Microsoft® 365 setup &amp; administration</li>
+                  <li>Zero-trust access &amp; permission controls</li>
+                  <li>SIEM monitoring &amp; alerting</li>
+                  <li>Backup &amp; recovery planning</li>
+                </ul>
+                <a href="#contact" class="serv-quote-btn">Get a free quote</a>
+                <a href="software-solutions.html" class="serv-learn">Learn more &rarr;</a>
               </div>
             </div>
-            <div class="card">
+            <div class="card" id="svc-excel">
               <div class="box">
                 <i class="fas fa-code"></i>
                 <div class="text">Excel &amp; ServiceNow®</div>
@@ -419,6 +512,14 @@
                   Custom worksheets, dashboards, and account tracking.
                   ServiceNow® dashboard customization.
                 </p>
+                <ul class="serv-features">
+                  <li>Custom spreadsheets &amp; formulas</li>
+                  <li>Dashboards &amp; automated reporting</li>
+                  <li>ServiceNow® dashboard customization</li>
+                  <li>Account &amp; inventory tracking</li>
+                </ul>
+                <a href="#contact" class="serv-quote-btn">Get a free quote</a>
+                <a href="excel-servicenow.html" class="serv-learn">Learn more &rarr;</a>
               </div>
             </div>
           </div>
@@ -643,8 +744,95 @@
                   </a>
                 </div>
               </div>
+              <!-- Project 8 -->
+              <div class="swiper-slide card">
+                <div class="box">
+                  <img
+                    src="Img/local/ops-dashboard.png"
+                    alt="OPS Dashboard - Control Center badge"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <a
+                    href="https://backend-dashboard-myitguy.netlify.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div class="text">Project 8 - Ops Dashboard</div>
+                    <p>
+                      A cyberpunk-styled infrastructure control center that
+                      launches development, communication, and remote services
+                      from one portal - including a browser-based VS Code /
+                      code-server IDE with GitHub repo sync - with live system
+                      and service-status monitoring.
+                    </p>
+                  </a>
+                </div>
+              </div>
+              <!-- Project 9 -->
+              <div class="swiper-slide card">
+                <div class="box">
+                  <div class="proj-icon">
+                    <i class="fas fa-database" aria-hidden="true"></i>
+                  </div>
+                  <a
+                    href="https://github.com/garrettadams23/portfolio-db"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div class="text">Project 9 - Portfolio Database</div>
+                    <p>
+                      A fully normalized PostgreSQL schema - 9 tables, 6 views,
+                      and an organized query library - demonstrating real-world
+                      relational database design.
+                    </p>
+                  </a>
+                </div>
+              </div>
             </div>
             <div class="swiper-pagination"></div>
+          </div>
+          <div class="teams-cta">
+            <a href="articles.html"
+              >Read my IT tips &amp; guides <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="faq" id="faq">
+        <div class="max-width">
+          <h2 class="title">FAQ</h2>
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary>What areas do you serve?</summary>
+              <p>I'm based in Congress Heights, Washington, DC and help individuals and small businesses across the DC metro area. Many issues can also be handled remotely, so distance usually isn't a barrier.</p>
+            </details>
+            <details class="faq-item">
+              <summary>What kinds of problems can you help with?</summary>
+              <p>Three main areas: hands-on troubleshooting for Windows, Linux, and Android devices; software and security solutions like Microsoft 365 setup, zero-trust access, and SIEM monitoring; and Excel and ServiceNow work such as custom spreadsheets, dashboards, and reporting. Not sure which one you need? The 60-second quiz will point you in the right direction.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Do you offer remote support or only in person?</summary>
+              <p>Both. Many software, security, and spreadsheet tasks can be done remotely, while hardware problems sometimes need an in-person visit around the DC area. We'll pick the fastest option when you reach out.</p>
+            </details>
+            <details class="faq-item">
+              <summary>How much does IT help cost?</summary>
+              <p>It depends on the scope of the work, so the best next step is a free consultation. Reach out through the contact form or book a time on my calendar, and I'll give you a clear estimate before any work starts.</p>
+            </details>
+            <details class="faq-item">
+              <summary>My computer is really slow - can that be fixed?</summary>
+              <p>Usually, yes. A slow computer is one of the most common issues I handle, and it's often fixable without buying new hardware - think startup cleanup, malware checks, storage and memory limits, and overdue driver or software updates.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Do you work with businesses that handle sensitive or regulated data?</summary>
+              <p>Yes. With a DoD background, I'm comfortable with the access controls, monitoring, and security basics that matter for organizations handling sensitive data, and I can help you understand and prepare for frameworks like CMMC or DFARS that are common for DC-area contractors.</p>
+            </details>
+            <p class="faq-more">
+              Want more detail? Read the
+              <a href="articles.html">IT tips &amp; guides</a>.
+            </p>
           </div>
         </div>
       </section>

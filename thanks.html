@@ -119,6 +119,14 @@
       <a class="alt" href="/#business-card">…or book a free consult now</a>
     </main>
 
+    <!-- Fire a GA4 conversion signal on the thank-you page view.
+         Create a GTM "Custom Event" trigger on event name "contact_lead"
+         and mark it as a conversion in GA4. -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: "contact_lead" });
+    </script>
+
     <script src="consent.js" defer></script>
   </body>
 </html>

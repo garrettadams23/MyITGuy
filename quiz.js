@@ -87,6 +87,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const resultDesc = document.getElementById("quiz-result-desc");
   const resultReco = document.getElementById("quiz-result-reco");
   const retakeBtn = document.getElementById("quiz-retake");
+  const resultServiceLink = document.getElementById("quiz-result-service");
+
+  const SERVICE_PAGES = {
+    troubleshooting: "troubleshooting.html",
+    software: "software-solutions.html",
+    excel: "excel-servicenow.html",
+  };
 
   const scores = { troubleshooting: 0, software: 0, excel: 0 };
   let currentQuestion = 0;
@@ -134,7 +141,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function showResult() {
-    const result = QUIZ_RESULTS[getWinningCategory()];
+    const category = getWinningCategory();
+    const result = QUIZ_RESULTS[category];
+
+    if (resultServiceLink) {
+      resultServiceLink.href = SERVICE_PAGES[category];
+    }
 
     resultIcon.className = `quiz-result-icon fas ${result.icon}`;
     resultTitle.textContent = `You need: ${result.title}`;
@@ -148,6 +160,14 @@ document.addEventListener("DOMContentLoaded", () => {
     leadForm.addEventListener("submit", (event) => {
       event.preventDefault();
       resultField.value = QUIZ_RESULTS[getWinningCategory()].title;
+
+      // GA4 conversion signal: quiz completed (create a GTM Custom Event
+      // trigger on "quiz_completed").
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "quiz_completed",
+        quiz_result: resultField.value,
+      });
 
       const formData = new FormData(leadForm);
       fetch(window.location.pathname, {

@@ -16,6 +16,8 @@ jobs:
   ping:
     name: Ping database
     runs-on: ubuntu-latest
+    env:
+      NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
     steps:
       - name: Query Supabase via the db-test function
         run: |
@@ -25,3 +27,15 @@ jobs:
             echo "::error::db-test ping failed with HTTP $http_code"
             exit 1
           fi
+
+      # Push a phone alert if the ping failed, so an outage is noticed
+      # before a customer does. No-op unless the NTFY_TOPIC secret is set.
+      - name: Alert on failure via ntfy
+        if: failure() && env.NTFY_TOPIC != ''
+        run: |
+          curl -s \
+            -H "Title: ⚠️ MyITGuy keep-awake ping failed" \
+            -H "Tags: warning" \
+            -H "Priority: 4" \
+            -d "The scheduled Supabase keep-awake ping failed - the site or database may be down. Check the Actions log and https://myitguy.netlify.app/api/db-test." \
+            "https://ntfy.sh/${NTFY_TOPIC}"
