@@ -703,6 +703,51 @@ section .title::after {
      border-color: var(--light-text);
 }
 
+/* Icon-based project cards (for repos with no logo) */
+.teams .swiper-slide.card .proj-icon {
+     height: 150px;
+     width: 150px;
+     max-width: 100%;
+     margin: 0 auto;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     border-radius: 50%;
+     border: 5px solid var(--primary-color);
+     background: var(--secondary-background);
+     transition: all 0.3s ease;
+}
+
+.teams .swiper-slide.card .proj-icon i {
+     font-size: 56px;
+     color: var(--primary-color);
+     transition: color 0.3s ease;
+}
+
+.teams .swiper-slide.card:hover .proj-icon {
+     border-color: var(--light-text);
+}
+
+.teams .swiper-slide.card:hover .proj-icon i {
+     color: var(--light-text);
+}
+
+/* Link to the tips page below the projects carousel */
+.teams .teams-cta {
+     text-align: center;
+     margin-top: 30px;
+}
+
+.teams .teams-cta a {
+     color: var(--light-text);
+     font-weight: 500;
+     text-decoration: underline;
+}
+
+.teams .teams-cta a:hover {
+     color: var(--primary-color);
+}
+
 .swiper-pagination {
     position: relative;
     margin-top: 20px;
