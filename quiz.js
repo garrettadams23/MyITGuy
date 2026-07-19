@@ -87,6 +87,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const resultDesc = document.getElementById("quiz-result-desc");
   const resultReco = document.getElementById("quiz-result-reco");
   const retakeBtn = document.getElementById("quiz-retake");
+  const resultServiceLink = document.getElementById("quiz-result-service");
+
+  const SERVICE_ANCHORS = {
+    troubleshooting: "svc-troubleshooting",
+    software: "svc-software",
+    excel: "svc-excel",
+  };
 
   const scores = { troubleshooting: 0, software: 0, excel: 0 };
   let currentQuestion = 0;
@@ -134,7 +141,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function showResult() {
-    const result = QUIZ_RESULTS[getWinningCategory()];
+    const category = getWinningCategory();
+    const result = QUIZ_RESULTS[category];
+
+    if (resultServiceLink) {
+      resultServiceLink.href = `index.html#${SERVICE_ANCHORS[category]}`;
+    }
 
     resultIcon.className = `quiz-result-icon fas ${result.icon}`;
     resultTitle.textContent = `You need: ${result.title}`;
