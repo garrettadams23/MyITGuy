@@ -1,0 +1,61 @@
+name: Database health check
+
+# Checks the Supabase database DIRECTLY via its REST API (PostgREST),
+# with no dependency on the Netlify site or its functions. This both
+# verifies the database is reachable/healthy AND counts as real activity,
+# so the free-tier project is never auto-paused.
+#
+# Why this exists separately from keep-supabase-awake.yml: that workflow
+# pings the live site's /api/db-test function, so it fails whenever the
+# Netlify function's env vars are misconfigured even though the database
+# itself is perfectly healthy. This check talks to Supabase straight, so
+# a red run here means the database (or the SUPABASE_* secrets) is the
+# real problem.
+#
+# Requires repo secrets: SUPABASE_URL, SUPABASE_SECRET_KEY (service/secret
+# key - bypasses RLS). NTFY_TOPIC is optional for a phone alert on failure.
+on:
+  schedule:
+    - cron: "23 13 */5 * *"   # every 5 days, comfortably inside the 7-day pause window
+  workflow_dispatch:
+
+jobs:
+  health:
+    name: Query Supabase directly
+    runs-on: ubuntu-latest
+    env:
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+      NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+    steps:
+      - name: Check database via Supabase REST API
+        run: |
+          if [ -z "$SUPABASE_URL" ] || [ -z "$SUPABASE_SECRET_KEY" ]; then
+            echo "::error::SUPABASE_URL or SUPABASE_SECRET_KEY repo secret is not set"
+            exit 1
+          fi
+          # Lightweight real query against a real table -> touches the DB.
+          url="${SUPABASE_URL%/}/rest/v1/contact_submissions?select=id&limit=1"
+          http_code=$(curl -sS --max-time 30 -o response.txt -w "%{http_code}" \
+            -H "apikey: $SUPABASE_SECRET_KEY" \
+            -H "Authorization: Bearer $SUPABASE_SECRET_KEY" \
+            "$url")
+          echo "HTTP $http_code"
+          cat response.txt || true
+          echo
+          if [ "$http_code" -ne 200 ]; then
+            echo "::error::Supabase health check failed with HTTP $http_code (401/403 = bad SUPABASE_SECRET_KEY; 000/5xx = URL/DB unreachable)"
+            exit 1
+          fi
+          echo "Database is healthy and reachable."
+
+      # Optional phone alert if the database is genuinely unreachable.
+      - name: Alert on failure via ntfy
+        if: failure() && env.NTFY_TOPIC != ''
+        run: |
+          curl -s \
+            -H "Title: ⚠️ MyITGuy DB health check failed" \
+            -H "Tags: warning" \
+            -H "Priority: 4" \
+            -d "The direct Supabase health check failed - the database may be paused/unreachable, or SUPABASE_URL / SUPABASE_SECRET_KEY is wrong. Check the Actions log." \
+            "https://ntfy.sh/${NTFY_TOPIC}"
