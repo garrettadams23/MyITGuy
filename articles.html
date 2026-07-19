@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Practical IT tips from My IT Guy LLC: why your computer is slow and how to fix it, small-business backup on a budget, and building ServiceNow dashboards people actually use."
+    />
+    <title>IT Tips &amp; Guides | My IT Guy LLC</title>
+
+    <!-- Favicons -->
+    <link rel="manifest" href="site.webmanifest" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="Img/favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="Img/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="Img/favicon/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="Img/favicon/apple-touch-icon.png"
+    />
+    <meta name="apple-mobile-web-app-title" content="My IT Guy" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://myitguy.netlify.app/articles.html" />
+
+    <!-- Open Graph / Social Meta Tags -->
+    <meta property="og:title" content="IT Tips &amp; Guides - My IT Guy LLC" />
+    <meta property="og:url" content="https://myitguy.netlify.app/articles.html" />
+    <meta
+      property="og:image"
+      content="https://myitguy.netlify.app/Img/local/garrett-formal.webp"
+    />
+    <meta
+      property="og:image:alt"
+      content="Garrett Adams, founder of My IT Guy LLC"
+    />
+    <meta
+      property="og:description"
+      content="Plain-English IT guides: fixing a slow computer, small-business backups on a budget, and ServiceNow dashboards people actually use."
+    />
+    <meta property="og:site_name" content="My IT Guy Website" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="IT Tips &amp; Guides - My IT Guy LLC" />
+    <meta
+      name="twitter:description"
+      content="Plain-English IT guides: fixing a slow computer, small-business backups on a budget, and ServiceNow dashboards people actually use."
+    />
+    <meta
+      name="twitter:image"
+      content="https://myitguy.netlify.app/Img/local/garrett-formal.webp"
+    />
+
+    <!-- Fonts & Icons Stylesheets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- GTM & Consent Initialization -->
+    <!-- (CONSENT_KEY lives in consent.js; redeclaring the const here throws) -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      // Consent Mode v2 defaults (DENIED)
+      gtag("consent", "default", {
+        ad_storage: "denied",
+        analytics_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        wait_for_update: 500,
+      });
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-MB82N5TC");
+    </script>
+
+    <!-- Structured Data: article list (mirrors the visible headings) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "IT Tips & Guides - My IT Guy LLC",
+        "url": "https://myitguy.netlify.app/articles.html",
+        "blogPost": [
+          {
+            "@type": "BlogPosting",
+            "headline": "Why Is My Computer So Slow? A No-Nonsense Troubleshooting Checklist",
+            "url": "https://myitguy.netlify.app/articles.html#slow-computer",
+            "datePublished": "2026-07-04",
+            "dateModified": "2026-07-04",
+            "author": { "@type": "Person", "name": "Garrett Adams" },
+            "publisher": { "@type": "Organization", "name": "My IT Guy LLC" },
+            "description": "A step-by-step checklist to speed up a slow computer, most of it fixable without buying new hardware."
+          },
+          {
+            "@type": "BlogPosting",
+            "headline": "Backup and Disaster Recovery on a Small-Business Budget",
+            "url": "https://myitguy.netlify.app/articles.html#small-business-backup",
+            "datePublished": "2026-07-04",
+            "dateModified": "2026-07-04",
+            "author": { "@type": "Person", "name": "Garrett Adams" },
+            "publisher": { "@type": "Organization", "name": "My IT Guy LLC" },
+            "description": "The 3-2-1 backup rule explained plainly, why sync is not backup, and a budget starter plan any small business can run."
+          },
+          {
+            "@type": "BlogPosting",
+            "headline": "ServiceNow Dashboards 101: Building a Report Your Manager Will Actually Look At",
+            "url": "https://myitguy.netlify.app/articles.html#servicenow-dashboards",
+            "datePublished": "2026-07-04",
+            "dateModified": "2026-07-04",
+            "author": { "@type": "Person", "name": "Garrett Adams" },
+            "publisher": { "@type": "Organization", "name": "My IT Guy LLC" },
+            "description": "How to build ServiceNow dashboards people actually use: start with the question, pick a few metrics, and match the chart to the message."
+          }
+        ]
+      }
+    </script>
+  </head>
+
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-MB82N5TC"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+        title="Google Tag Manager"
+      ></iframe
+    ></noscript>
+
+    <!-- Cookie Consent Banner -->
+    <div
+      id="consent-banner"
+      class="consent hidden"
+      role="dialog"
+      aria-live="polite"
+      aria-label="Cookie consent"
+    >
+      <div class="consent__box">
+        <div class="consent__text">
+          <strong>Cookies &amp; analytics</strong>
+          <p>
+            We use cookies for analytics and to improve the site. You can accept
+            or deny.
+          </p>
+        </div>
+        <div class="consent__actions">
+          <button id="consent-deny" class="btn btn--secondary" type="button">
+            Deny
+          </button>
+          <button id="consent-accept" class="btn btn--primary" type="button">
+            Accept
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Up Button -->
+    <button class="scroll-up-btn" aria-label="Scroll to top">
+      <img src="Img/favicon/favicon-96x96.png" alt="" />
+    </button>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="max-width">
+        <div class="logo">
+          <a href="index.html">MyI<span>T</span>Guy</a>
+        </div>
+        <ul class="menu">
+          <li><a href="index.html" class="menu-btn">Home</a></li>
+          <li><a href="index.html#about" class="menu-btn">About</a></li>
+          <li><a href="index.html#services" class="menu-btn">Services</a></li>
+          <li><a href="index.html#skills" class="menu-btn">Skills</a></li>
+          <li><a href="index.html#teams" class="menu-btn">Projects</a></li>
+          <li><a href="articles.html" class="menu-btn">Tips</a></li>
+          <li><a href="index.html#contact" class="menu-btn">Contact</a></li>
+          <li>
+            <button class="theme-btn" aria-label="Toggle Dark Mode">
+              <i class="fas fa-moon"></i>
+            </button>
+          </li>
+        </ul>
+        <div class="menu-btn" role="button" tabindex="0" aria-label="Open menu">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Hero -->
+      <section class="quiz-hero">
+        <div class="max-width">
+          <a class="quiz-back-link" href="index.html">&larr; Back to MyITGuy</a>
+          <h1>IT Tips &amp; Guides</h1>
+          <p>
+            Plain-English answers to the questions I get asked most - no jargon,
+            no upsell. Try the steps yourself, and reach out if you get stuck.
+          </p>
+        </div>
+      </section>
+
+      <!-- Articles -->
+      <section class="tips">
+        <div class="max-width">
+          <div class="tips-wrap">
+            <!-- Table of contents -->
+            <nav class="tips-toc" aria-label="Articles">
+              <h2>In this guide</h2>
+              <ol>
+                <li><a href="#slow-computer">Why is my computer so slow? A no-nonsense checklist</a></li>
+                <li><a href="#small-business-backup">Backup &amp; disaster recovery on a small-business budget</a></li>
+                <li><a href="#servicenow-dashboards">ServiceNow dashboards 101: a report your manager will actually look at</a></li>
+              </ol>
+            </nav>
+
+            <!-- Article 1 -->
+            <article class="tips-article" id="slow-computer">
+              <span class="tips-tag">Troubleshooting Systems</span>
+              <h2>Why Is My Computer So Slow? A No-Nonsense Troubleshooting Checklist</h2>
+              <p>
+                A slow computer is one of the most common problems I get called
+                about - and most of the time it's fixable without spending a dime
+                on new hardware. Work down this list in order; each step is
+                something you can try yourself before calling anyone.
+              </p>
+
+              <h3>1. Restart it properly</h3>
+              <p>
+                Not sleep - a full restart. Days or weeks of uptime pile up
+                pending updates and memory leaks that a reboot clears in seconds.
+                Start here every time.
+              </p>
+
+              <h3>2. Install pending updates</h3>
+              <p>
+                Let the operating system and drivers finish updating. Half-applied
+                updates are a surprisingly common cause of sluggishness, and many
+                slowdowns are already-fixed bugs.
+              </p>
+
+              <h3>3. Trim your startup programs</h3>
+              <p>
+                Too many apps launching at boot is the classic culprit. On Windows,
+                open Task Manager &rarr; Startup; on a Mac, System Settings &rarr;
+                General &rarr; Login Items. Disable anything you don't need running
+                the moment you turn the machine on.
+              </p>
+
+              <h3>4. Free up disk space</h3>
+              <p>
+                A drive that's more than about 90% full slows to a crawl. Empty the
+                trash, uninstall apps you never open, and clear temporary files.
+                Aim to keep at least 15% free.
+              </p>
+
+              <h3>5. Tame the browser</h3>
+              <p>
+                Every open tab and extension eats memory. Close the tabs you're not
+                using, remove extensions you don't recognize, and restart the
+                browser. For older machines, a lighter browser helps too.
+              </p>
+
+              <h3>6. Scan for malware and bloatware</h3>
+              <p>
+                Run a reputable malware scan, and uninstall "PC cleaner" or toolbar
+                software you didn't intentionally install - that category is often
+                the slowdown, not the cure.
+              </p>
+
+              <h3>7. Check for overheating</h3>
+              <p>
+                Dust-clogged vents make a computer throttle itself to cool down.
+                Clear the vents and fans and make sure air can move around it,
+                especially on laptops used on soft surfaces.
+              </p>
+
+              <h3>8. Consider an SSD</h3>
+              <p>
+                If the machine still runs on a spinning hard drive, swapping it for
+                a solid-state drive is the single biggest speed-up you can give an
+                older computer - often the difference between "replace it" and
+                "good for a few more years."
+              </p>
+
+              <div class="tips-cta">
+                <p>Still slow after all that, or seeing crashes and freezes? That can point to failing hardware.</p>
+                <a class="tips-btn" href="index.html#contact">Get in touch and I'll take a look</a>
+              </div>
+            </article>
+
+            <!-- Article 2 -->
+            <article class="tips-article" id="small-business-backup">
+              <span class="tips-tag">Software Solutions</span>
+              <h2>Backup and Disaster Recovery on a Small-Business Budget</h2>
+              <p>
+                Backups are the cheapest insurance a small business can buy.
+                Ransomware, a dead hard drive, a stolen laptop, or an accidental
+                "delete all" can wipe out years of work - and you don't need an
+                enterprise budget to be protected.
+              </p>
+
+              <h3>The 3-2-1 rule, in one line</h3>
+              <p>
+                Keep <strong>3</strong> copies of your data, on <strong>2</strong>
+                different types of media, with <strong>1</strong> copy off-site.
+                That's the entire strategy - everything below is just how you get
+                there cheaply.
+              </p>
+
+              <h3>Sync is not backup</h3>
+              <p>
+                Dropbox, OneDrive, and Google Drive copy your <em>latest</em>
+                version everywhere - including a mistake or a ransomware encryption,
+                which then syncs over your good copy. Real backup keeps older
+                versions you can roll back to. Use both: sync for convenience,
+                backup for safety.
+              </p>
+
+              <h3>Budget-friendly options</h3>
+              <ul>
+                <li>An external drive you plug in for scheduled backups - then <strong>disconnect</strong>, so ransomware can't reach it.</li>
+                <li>A cloud backup service with version history (Backblaze, iDrive and similar) for the off-site copy.</li>
+                <li>Built-in tools are a solid start: Windows File History and macOS Time Machine cost nothing.</li>
+              </ul>
+
+              <h3>Automate it, then test it</h3>
+              <p>
+                A backup you have to remember won't happen - schedule it. And an
+                untested backup isn't a backup: once or twice a year, actually
+                restore a file and confirm it opens. That five-minute check is what
+                separates a real safety net from a false sense of security.
+              </p>
+
+              <div class="tips-cta">
+                <p>Want a backup plan sized to your business without the enterprise price tag?</p>
+                <a class="tips-btn" href="index.html#contact">Ask me to set one up</a>
+              </div>
+            </article>
+
+            <!-- Article 3 -->
+            <article class="tips-article" id="servicenow-dashboards">
+              <span class="tips-tag">Excel &amp; ServiceNow&reg;</span>
+              <h2>ServiceNow Dashboards 101: Building a Report Your Manager Will Actually Look At</h2>
+              <p>
+                Most dashboards get built once, glanced at, and ignored. The ones
+                people actually use share a few traits - here's how to build a
+                report your manager will open on purpose.
+              </p>
+
+              <h3>Start with the question, not the data</h3>
+              <p>
+                Before you drag in a single widget, ask what decision this dashboard
+                helps someone make. "Are we keeping up with incoming tickets?" is a
+                far better starting point than "show all the data."
+              </p>
+
+              <h3>Pick 3-5 metrics, not 30</h3>
+              <p>
+                A wall of numbers hides the signal. Choose the few that answer the
+                question - for a service desk that's often open vs. closed this
+                week, average resolution time, SLA breaches, and the backlog trend.
+              </p>
+
+              <h3>Reports vs. dashboards</h3>
+              <p>
+                In ServiceNow a report is one visualization; a dashboard (or
+                homepage) collects several. Build a few clean, well-filtered reports
+                first, then arrange them - not the other way around.
+              </p>
+
+              <h3>Match the chart to the message</h3>
+              <p>
+                Use a single big number for "how many are open right now," a trend
+                line for "are we improving," and a bar breakdown for "where's the
+                load." Skip the twelve-slice pie chart - nobody can read it.
+              </p>
+
+              <h3>Filter to the audience, and keep it fresh</h3>
+              <p>
+                A team lead wants their team's view, not the whole company's - scope
+                it with filters or roles. Then schedule the dashboard or a PDF export
+                to land in their inbox on a cadence, so they never have to go looking
+                for it.
+              </p>
+
+              <div class="tips-cta">
+                <p>Want dashboards and reports built around what your team actually needs to see?</p>
+                <a class="tips-btn" href="index.html#contact">Let's build them together</a>
+              </div>
+            </article>
+
+            <!-- Not sure which service -->
+            <div class="tips-quiz-note">
+              <p>
+                Not sure which of these is your real problem?
+                <a href="quiz.html">Take the 60-second quiz</a> and get a
+                personalized recommendation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="max-width">
+        <p>
+          Created By
+          <a href="https://www.sololearn.com/en/profile/5936598"
+            >&copy; Garrett Adams</a
+          >
+          | <span class="far fa-copyright"></span>
+          <span id="copyright-year">2026</span> All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="consent.js" defer></script>
+    <script src="script.js" defer></script>
+  </body>
+</html>
