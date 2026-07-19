@@ -2085,3 +2085,55 @@ footer span a:hover {
      text-decoration: underline;
 }
 
+/* Service "packages": feature lists + quote CTA on the service cards */
+.services .serv-content .card {
+     scroll-margin-top: 90px;
+}
+
+.services .serv-features {
+     list-style: none;
+     text-align: left;
+     margin: 16px 0 18px;
+     padding: 0;
+}
+
+.services .serv-features li {
+     position: relative;
+     padding-left: 22px;
+     margin-bottom: 8px;
+     font-size: 14px;
+     line-height: 1.5;
+}
+
+.services .serv-features li::before {
+     content: "\2713";
+     position: absolute;
+     left: 0;
+     top: 0;
+     color: var(--primary-color);
+     font-weight: 700;
+}
+
+.services .serv-content .card:hover .serv-features li::before {
+     color: var(--light-text);
+}
+
+.services .serv-quote-btn {
+     display: inline-block;
+     background: #fff;
+     color: var(--primary-color);
+     padding: 9px 22px;
+     border-radius: 6px;
+     font-weight: 600;
+     font-size: 14px;
+     text-decoration: none;
+     border: 2px solid #fff;
+     transition: all 0.3s ease;
+}
+
+.services .serv-quote-btn:hover {
+     background: transparent;
+     color: #fff;
+     border-color: #fff;
+}
+
