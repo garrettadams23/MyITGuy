@@ -89,10 +89,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const retakeBtn = document.getElementById("quiz-retake");
   const resultServiceLink = document.getElementById("quiz-result-service");
 
-  const SERVICE_ANCHORS = {
-    troubleshooting: "svc-troubleshooting",
-    software: "svc-software",
-    excel: "svc-excel",
+  const SERVICE_PAGES = {
+    troubleshooting: "troubleshooting.html",
+    software: "software-solutions.html",
+    excel: "excel-servicenow.html",
   };
 
   const scores = { troubleshooting: 0, software: 0, excel: 0 };
@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const result = QUIZ_RESULTS[category];
 
     if (resultServiceLink) {
-      resultServiceLink.href = `index.html#${SERVICE_ANCHORS[category]}`;
+      resultServiceLink.href = SERVICE_PAGES[category];
     }
 
     resultIcon.className = `quiz-result-icon fas ${result.icon}`;

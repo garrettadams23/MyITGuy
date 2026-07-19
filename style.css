@@ -2137,3 +2137,15 @@ footer span a:hover {
      border-color: #fff;
 }
 
+.services .serv-learn {
+     display: block;
+     margin-top: 12px;
+     color: var(--light-text);
+     font-size: 13px;
+     text-decoration: underline;
+}
+
+.services .serv-learn:hover {
+     opacity: 0.8;
+}
+
