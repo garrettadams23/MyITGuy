@@ -124,7 +124,7 @@ Corrections to apply across `index.html`:
 Content & SEO:
 
 - [x] **FAQ section + FAQPage schema**: Add an FAQ block to `index.html` answering the top questions from `marketing/content-ideas.md` (slow computer, backups on a budget, security basics), marked up with FAQPage JSON-LD so Google can surface the answers under the site's listing. Small build, high local-SEO value.
-- [ ] **Publish first 3 articles**: Build a lightweight articles/tips section and publish the top three from the existing shortlist — "Why Is My Computer So Slow?" checklist, "Backup and Disaster Recovery on a Small-Business Budget", and "ServiceNow Dashboards 101". Biggest content lever, medium effort.
+- [x] **Publish first 3 articles**: Build a lightweight articles/tips section and publish the top three from the existing shortlist — "Why Is My Computer So Slow?" checklist, "Backup and Disaster Recovery on a Small-Business Budget", and "ServiceNow Dashboards 101". Biggest content lever, medium effort.
 - [ ] **Pricing / service packages**: Turn the three service cards into named packages with starting prices and a "Book a consult" CTA each; have quiz results deep-link to the matching package. Strong conversion improvement — needs real price points before building.
 - [ ] **Service landing pages**: Three dedicated pages (troubleshooting, security/software solutions, Excel & ServiceNow) targeting searches like "computer help Washington DC". Deeper SEO play, larger effort.
 
