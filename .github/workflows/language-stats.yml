@@ -1,10 +1,10 @@
 name: Language Percentage Breakdown
 
+# Manual trigger only. This used to run on every push/PR to Testing, which
+# fired a full Ruby + github-linguist install dozens of times a day during
+# routine syncs for a stat that rarely changes. Run it from the Actions tab
+# when you actually want a fresh language breakdown.
 on:
-  push:
-    branches: [ "Testing" ]
-  pull_request:
-    branches: [ "Testing" ]
   workflow_dispatch:
 
 jobs:
@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -26,10 +26,10 @@ jobs:
         run: |
           echo "Analyzing repository languages..."
           github-linguist --breakdown > linguist_stats.txt
-          
+
           # Print to standard workflow log
           cat linguist_stats.txt
-          
+
           # Publish to GitHub Actions Step Summary UI
           echo "### 📊 Code Language Breakdown" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`text" >> $GITHUB_STEP_SUMMARY

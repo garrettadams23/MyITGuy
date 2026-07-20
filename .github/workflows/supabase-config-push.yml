@@ -20,11 +20,13 @@ jobs:
       SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
       RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: supabase/setup-cli@v2
         with:
-          version: latest
+          # Pinned (was "latest") so runs are reproducible and don't break
+          # on a surprise CLI change. Bump deliberately when needed.
+          version: 2.109.1
 
       - name: Link project
         run: |
