@@ -30,12 +30,17 @@ jobs:
 
       # Push a phone alert if the ping failed, so an outage is noticed
       # before a customer does. No-op unless the NTFY_TOPIC secret is set.
+      # The run URL goes in a Click header (clean, whole-notification tap)
+      # rather than the message body, where a trailing period used to get
+      # glued onto the link and 404.
       - name: Alert on failure via ntfy
         if: failure() && env.NTFY_TOPIC != ''
         run: |
+          run_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
           curl -s \
-            -H "Title: ⚠️ MyITGuy keep-awake ping failed" \
+            -H "Title: ⚠️ MyITGuy db-test function failing" \
             -H "Tags: warning" \
             -H "Priority: 4" \
-            -d "The scheduled Supabase keep-awake ping failed - the site or database may be down. Check the Actions log and https://myitguy.netlify.app/api/db-test." \
+            -H "Click: $run_url" \
+            -d "The live site's /api/db-test function returned an error. That points at the Netlify function or its env config - the Supabase database itself may be fine (see the db-health-check workflow for a direct DB verdict). Tap to open the Actions run." \
             "https://ntfy.sh/${NTFY_TOPIC}"
