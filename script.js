@@ -58,15 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    if (typeof Typed !== "undefined" && document.querySelector(".typing-2")) {
-        new Typed(".typing-2", {
-            strings: ["Tier 2 Imaging Technician", "IT Expert", "Tier 2 Help Desk", "IT Administrator", "Freelancer"],
-            typeSpeed: 100,
-            backSpeed: 60,
-            loop: true
-        });
-    }
-
     // Swiper Carousel script
     if (typeof Swiper !== "undefined" && document.querySelector(".mySwiper")) {
         new Swiper(".mySwiper", {
