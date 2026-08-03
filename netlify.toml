@@ -72,3 +72,16 @@
   to = "/404.html"
   status = 404
   force = true
+
+# AI coding-assistant skills (Supabase agent skills) - dev tooling, not site content
+[[redirects]]
+  from = "/.agents/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/skills-lock.json"
+  to = "/404.html"
+  status = 404
+  force = true
