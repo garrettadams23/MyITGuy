@@ -85,3 +85,10 @@
   to = "/404.html"
   status = 404
   force = true
+
+# Project-scoped MCP server config (Supabase MCP) - dev tooling, not site content
+[[redirects]]
+  from = "/.mcp.json"
+  to = "/404.html"
+  status = 404
+  force = true
