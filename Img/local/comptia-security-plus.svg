@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="CompTIA Security+ Certified — Plus Series">
+  <title>CompTIA Security+ Certified — Plus Series</title>
+  <circle cx="300" cy="300" r="275" fill="#ffffff"/>
+  <g fill="none" stroke="#C8102E" stroke-width="26">
+    <path d="M259.02 558.78 A262 262 0 1 1 340.98 558.78"/>
+    <path d="M322.84 561 A262 262 0 0 1 277.16 561"/>
+  </g>
+  <text x="300" y="198" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="64" letter-spacing="1" fill="#C8102E">CompTIA</text>
+  <text x="300" y="330" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="78" fill="#26333B">Security+</text>
+  <rect x="196" y="368" width="208" height="54" rx="27" fill="none" stroke="#C8102E" stroke-width="4"/>
+  <text x="300" y="405" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="28" letter-spacing="3" fill="#C8102E">CERTIFIED</text>
+  <text x="300" y="478" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="40" letter-spacing="1" fill="#5B5E62">Plus Series</text>
+</svg>
